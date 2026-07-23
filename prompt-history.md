@@ -1,0 +1,20 @@
+Prompt history
+
+## To start my application
+
+- I want to build a front end application called Nouri using react, tailwind, daisy, redux toolkit, no backend, authentication, database, API calls yet.  We will use mock data only. 
+The app should include a landing page that describes the services offered and a button to get started.  There should be a multistep survey that asks what type of fitness they enjoy or are open to trying. Their current activity level. What type of foods they are allergic to and enjoy.  If they have any restrictions, religious or vegan for example.  If they take any supplements. What their age, gender, weight and height are. Also add any other things in that would be helpful in helping someone make healthier lifestyle choices. I want to make some mock data using this to start.
+
+## To get my dashboard/results page
+
+- Next i would like to have all their information put onto a dashboard for them with reccomendations for them. I want their BMI to be calculated and if over or underweight I would like to give them reccomendations for food, fitness and supplements to help them get to an ideal weight.  In the survey, at the beginning we should ask them their goal in using this app.  is it to loose, gain, tone, etc.  Take their age into account when doing calculations.  We should make reccomendations that are not just things they listed but similar or adding those things to recipes. After we get their results I want to move onto navigation on that page to further delve into these results with additional resources for each reccomendation when they click a button.
+
+## When I inquired a problem with buttons firing correctly and the content on naviagtion
+
+- When i press the get started button I should be able to run through the survey. The reset mock data should put mock data in there if you dont want to type in your own data. Reset mock data should rest mock data and take you to the dashboard. On the dashboard the BMI should show their range and also the range that is healthy using a colored bar or similar. I would like the navigational buttons to go to something more robust.  The food one should start with having reccomended recipies with a list of recipes that include their foods they choose along with like foods to help them accomplish their goals.
+
+### Cursor Response: 
+
+- I’ve identified the main flow bug: the “Get started” action currently jumps straight into the dashboard instead of the survey. I’m splitting those screens cleanly now so the onboarding experience reads correctly end to end.
+
+## For styling
