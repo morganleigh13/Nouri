@@ -76,7 +76,7 @@ export function buildRecommendations(survey) {
     });
   }
 
-  if (allergies.includes('Dairy')) {
+  if (allergies.includes('Dairy') || restrictions.includes('Vegan')) {
     addWithFallback(recipeCards, {
       meal: 'Breakfast',
       title: 'Dairy-Free Smoothie Bowl',
