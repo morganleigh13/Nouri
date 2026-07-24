@@ -17,4 +17,9 @@ The app should include a landing page that describes the services offered and a 
 
 - I’ve identified the main flow bug: the “Get started” action currently jumps straight into the dashboard instead of the survey. I’m splitting those screens cleanly now so the onboarding experience reads correctly end to end.
 
+### For organization and readability
+
+- Cursor: This leaves App.jsx much smaller and more focused on screen state and rendering logic. If you want, the next clean-up step would be extracting the dynamic recommendation engine itself into a helper module as well. 
+ - Dev: I would also like to use browser router, in my main file and then routes and route in App to futher clean it up.  Then we can split the landingpage and dashboard into its own components.  Then inside dashboard we can have each of the nav routes from their in their own components, importing them into dashboard.  Would that be best practice? If so i would like this done.
+
 ## For styling
