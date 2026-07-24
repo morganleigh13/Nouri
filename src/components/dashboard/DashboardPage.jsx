@@ -1,9 +1,4 @@
-import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
-import OverviewTab from './OverviewTab';
-import FoodTab from './FoodTab';
-import FitnessTab from './FitnessTab';
-import SupplementsTab from './SupplementsTab';
-import ResourcesTab from './ResourcesTab';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const navItems = [
   { key: 'overview', label: 'Overview' },
@@ -13,7 +8,7 @@ const navItems = [
   { key: 'resources', label: 'Resources' },
 ];
 
-export default function DashboardPage({ survey, recommendations, summaryText, onBackToLanding }) {
+export default function DashboardPage({ summaryText, onBackToLanding }) {
   return (
     <div className="min-h-screen bg-base-200 p-4 text-base-content lg:p-8">
       <div className="mx-auto max-w-6xl rounded-3xl bg-base-100 p-6 shadow-xl">
@@ -37,14 +32,7 @@ export default function DashboardPage({ survey, recommendations, summaryText, on
           ))}
         </div>
 
-        <Routes>
-          <Route path="/" element={<Navigate to="overview" replace />} />
-          <Route path="overview" element={<OverviewTab survey={survey} recommendations={recommendations} />} />
-          <Route path="food" element={<FoodTab recommendations={recommendations} />} />
-          <Route path="fitness" element={<FitnessTab recommendations={recommendations} />} />
-          <Route path="supplements" element={<SupplementsTab recommendations={recommendations} />} />
-          <Route path="resources" element={<ResourcesTab recommendations={recommendations} />} />
-        </Routes>
+        <Outlet />
 
         <div className="mt-8 rounded-2xl bg-base-200 p-4 text-sm">
           <p className="font-semibold">Mock profile preview</p>

@@ -1,6 +1,14 @@
 import { resourceCatalog } from '../../data/resourceCatalog';
+import { fitnessLocationGuides } from '../../data/fitnessResources';
+
+const fitnessCategories = [
+  { key: 'running', label: 'Running' },
+  { key: 'strength', label: 'Strength' },
+];
 
 export default function ResourcesTab({ recommendations }) {
+  const location = 'New York, NY';
+
   return (
     <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
       <div className="card bg-base-200 shadow">
@@ -27,6 +35,31 @@ export default function ResourcesTab({ recommendations }) {
                 <li key={recipe.title} className="rounded-xl bg-base-200 p-3">{recipe.title} — {recipe.ingredients.join(', ')}</li>
               ))}
             </ul>
+          </div>
+
+          <div className="mt-6">
+            <h3 className="card-title">Fitness resources</h3>
+            <p className="mt-2 text-sm">Choose a workout style to see local places to train near {location}.</p>
+            <div className="mt-4 grid gap-3">
+              {fitnessCategories.map((category) => (
+                <div key={category.key} className="rounded-2xl bg-base-100 p-4">
+                  <p className="font-semibold">{category.label}</p>
+                  <div className="mt-3 space-y-3">
+                    {(fitnessLocationGuides[category.key][location] || fitnessLocationGuides[category.key].default).map((place) => (
+                      <div key={place.name} className="rounded-xl bg-base-200 p-3">
+                        <p className="font-semibold">{place.name}</p>
+                        <p className="mt-1 text-sm opacity-75">{place.type}</p>
+                        <p className="mt-1 text-sm opacity-70">Location: {place.address}</p>
+                        <p className="mt-1 text-sm opacity-70">Hours: {place.hours}</p>
+                        <a className="link link-primary mt-2 inline-block text-sm" href={place.website} target="_blank" rel="noreferrer">
+                          Visit website
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

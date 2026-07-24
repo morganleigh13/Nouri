@@ -5,6 +5,11 @@ import { resetSurvey, updateSurvey } from './store/store';
 import LandingPage from './components/LandingPage';
 import SurveyPage from './components/SurveyPage';
 import DashboardPage from './components/dashboard/DashboardPage';
+import OverviewTab from './components/dashboard/OverviewTab';
+import FoodTab from './components/dashboard/FoodTab';
+import FitnessTab from './components/dashboard/FitnessTab';
+import SupplementsTab from './components/dashboard/SupplementsTab';
+import ResourcesTab from './components/dashboard/ResourcesTab';
 import { buildRecommendations } from './utils/recommendationEngine';
 import './App.css';
 
@@ -69,13 +74,18 @@ function App() {
         path="/dashboard/*"
         element={
           <DashboardPage
-            survey={survey}
-            recommendations={recommendations}
             summaryText={summaryText}
             onBackToLanding={() => navigate('/')}
           />
         }
-      />
+      >
+        <Route path="overview" element={<OverviewTab survey={survey} recommendations={recommendations} />} />
+        <Route path="food" element={<FoodTab recommendations={recommendations} />} />
+        <Route path="fitness" element={<FitnessTab recommendations={recommendations} />} />
+        <Route path="supplements" element={<SupplementsTab recommendations={recommendations} />} />
+        <Route path="resources" element={<ResourcesTab recommendations={recommendations} />} />
+        <Route index element={<Navigate to="overview" replace />} />
+      </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
