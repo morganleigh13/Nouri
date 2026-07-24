@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { resourceCatalog } from '../../data/resourceCatalog';
 import { fitnessLocationGuides, supplementLocationGuides, foodServiceGuides, stateCityOptions } from '../../data/fitnessResources';
 
@@ -14,10 +15,14 @@ const foodServiceOptions = [
 ];
 
 export default function ResourcesTab({ recommendations }) {
+  const [searchParams] = useSearchParams();
+  const requestedActivity = searchParams.get('activity');
   const [selectedState, setSelectedState] = useState('New York');
   const [selectedCity, setSelectedCity] = useState('New York, NY');
   const [selectedDistance, setSelectedDistance] = useState(20);
-  const [selectedCategory, setSelectedCategory] = useState('running');
+  const [selectedCategory, setSelectedCategory] = useState(
+    requestedActivity === 'strength' ? 'strength' : 'running',
+  );
   const [selectedFoodService, setSelectedFoodService] = useState('delivery');
 
   const resourceList = fitnessLocationGuides[selectedCategory][selectedCity] || fitnessLocationGuides[selectedCategory].default;
@@ -58,6 +63,12 @@ export default function ResourcesTab({ recommendations }) {
           <h3 className="card-title">Food resources</h3>
           <p className="mt-2 text-sm">{resourceCatalog.food.details}</p>
 
+          {recommendations.dietaryNeeds.length > 0 && (
+            <p className="mt-3 rounded-xl bg-warning/10 p-3 text-sm">
+              Plan filters: {recommendations.dietaryNeeds.join(', ')}. Always confirm ingredients and service availability directly with the provider.
+            </p>
+          )}
+
           <div className="mt-4 rounded-2xl bg-base-100 p-4 text-sm">
             <p className="font-semibold">Recipe ideas</p>
             <ul className="mt-2 space-y-2">
@@ -69,7 +80,7 @@ export default function ResourcesTab({ recommendations }) {
 
           <div className="mt-6 rounded-2xl bg-base-100 p-4">
             <p className="font-semibold">Meal delivery and personal chefs</p>
-            <p className="mt-2 text-sm">Choose a service type to see options that fit the food pattern your plan is leaning toward.</p>
+            <p className="mt-2 text-sm">Static mock listings for the prototype. Choose a service type and distance to explore the interface.</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {foodServiceOptions.map((service) => (
                 <button
@@ -93,6 +104,7 @@ export default function ResourcesTab({ recommendations }) {
                   </a>
                 </div>
               ))}
+              {filteredFoodServices.length === 0 && <p className="text-sm opacity-70">No mock services match that distance. Try a wider radius.</p>}
             </div>
           </div>
 
@@ -168,6 +180,7 @@ export default function ResourcesTab({ recommendations }) {
                     </a>
                   </div>
                 ))}
+                {filteredResourceList.length === 0 && <p className="text-sm opacity-70">No mock locations match that distance. Try a wider radius or another city.</p>}
               </div>
             </div>
 

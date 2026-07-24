@@ -24,7 +24,7 @@ export default function LandingPage({ onResetMockData }) {
             <h2 className="card-title">Included services</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="rounded-2xl bg-base-200 px-4 py-3">Goal-focused onboarding survey</li>
-              <li className="rounded-2xl bg-base-200 px-4 py-3">BMI and age-aware profile review</li>
+              <li className="rounded-2xl bg-base-200 px-4 py-3">BMI and wellness-profile review</li>
               <li className="rounded-2xl bg-base-200 px-4 py-3">Food, fitness, and supplement recommendations</li>
               <li className="rounded-2xl bg-base-200 px-4 py-3">Mock navigation to review all results</li>
             </ul>

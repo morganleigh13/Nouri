@@ -11,13 +11,14 @@ export default function OverviewTab({ survey, recommendations }) {
     return weightInKilograms / (heightInMeters * heightInMeters);
   })();
 
-  const ageBand = survey.age >= 50 ? 'Older adult' : survey.age >= 25 ? 'Adult' : 'Younger adult';
+  const ageBand = survey.age >= 65 ? 'Older adult' : survey.age >= 25 ? 'Adult' : 'Younger adult';
   const targetBmiMin = 18.5;
   const targetBmiMax = 24.9;
   const currentWeight = Number(survey.weight) || 0;
   const heightMeters = Number(survey.height) ? Number(survey.height) / 100 : 0;
-  const targetWeight = heightMeters ? (targetBmiMax * heightMeters * heightMeters * 2.20462).toFixed(1) : 0;
-  const weightDelta = Number((currentWeight - Number(targetWeight)).toFixed(1));
+  const healthyWeightMin = heightMeters ? (targetBmiMin * heightMeters * heightMeters * 2.20462).toFixed(1) : 0;
+  const healthyWeightMax = heightMeters ? (targetBmiMax * heightMeters * heightMeters * 2.20462).toFixed(1) : 0;
+  const weightDelta = currentWeight < healthyWeightMin ? currentWeight - healthyWeightMin : currentWeight > healthyWeightMax ? currentWeight - healthyWeightMax : 0;
   const bmiStatus = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Healthy range' : bmi < 30 ? 'Overweight' : 'Obesity range';
   const bmiBarPosition = Math.min(Math.max((bmi / 35) * 100, 5), 100);
 
@@ -35,12 +36,12 @@ export default function OverviewTab({ survey, recommendations }) {
             <div className="rounded-2xl bg-base-100 p-4">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">Age range</p>
               <p className="mt-2 text-lg font-bold">{ageBand}</p>
-              <p className="text-sm opacity-70">Age-informed weight target: {targetWeight} lb</p>
+              <p className="text-sm opacity-70">Adult reference range: {healthyWeightMin}–{healthyWeightMax} lb</p>
             </div>
             <div className="rounded-2xl bg-base-100 p-4 sm:col-span-2">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">Current goal</p>
               <p className="mt-2 text-lg font-bold">{survey.goal}</p>
-              <p className="text-sm opacity-70">Weight delta from target: {Math.abs(weightDelta).toFixed(1)} lb {weightDelta > 0 ? 'above' : 'below'} your age-aware target</p>
+              <p className="text-sm opacity-70">{weightDelta === 0 ? 'Your current weight falls within this reference range.' : `${Math.abs(weightDelta).toFixed(1)} lb ${weightDelta > 0 ? 'above' : 'below'} the reference range.`}</p>
             </div>
           </div>
 
@@ -49,8 +50,10 @@ export default function OverviewTab({ survey, recommendations }) {
               <span>BMI range</span>
               <span>Healthy: {targetBmiMin}–{targetBmiMax}</span>
             </div>
-            <div className="h-3 rounded-full bg-base-300 overflow-hidden">
-              <div className="h-full rounded-full bg-success" style={{ width: `${Math.max(12, bmiBarPosition)}%` }} />
+            <div className="relative h-3 overflow-hidden rounded-full bg-warning/60">
+              <div className="absolute left-[53%] h-full w-[18%] bg-success" />
+              <div className="absolute left-[71%] h-full w-[29%] bg-error/60" />
+              <div className="absolute top-1/2 h-5 w-1 -translate-y-1/2 rounded-full bg-neutral" style={{ left: `${bmiBarPosition}%` }} aria-label={`Your BMI is ${bmi.toFixed(1)}`} />
             </div>
             <div className="mt-2 flex justify-between text-xs opacity-70">
               <span>Under 18.5</span>

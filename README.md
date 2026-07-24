@@ -1,16 +1,26 @@
-# React + Vite
+# Nouri
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Nouri is a front-end React prototype for exploring personalized wellness guidance. It collects a mock wellness profile and presents mock food, fitness, supplement, BMI, hydration, and resource recommendations.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React + Vite
+- React Router
+- Redux Toolkit
+- Tailwind CSS + DaisyUI
+- JavaScript (no TypeScript)
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Use `npm run lint` to check the code and `npm run build` to create a production build.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Data and safety
+
+The project intentionally has no backend, authentication, database, or API requests. Recommendations and resource listings are curated mock data in `src/data/`, so they are predictable during development and do not claim to be live local results.
+
+The app is educational only. Food, BMI, activity, and supplement content is not medical advice; users should verify ingredients and consult an appropriate clinician for individual medical, dietary, or supplement decisions.

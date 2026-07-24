@@ -34,4 +34,7 @@ The app should include a landing page that describes the services offered and a 
 
 - Cursor response: The main improvement I’m making now is the router layout itself: the dashboard should be a true wrapper with nested child routes, rather than the dashboard page owning its own separate route tree.
 
+### Moving onto using codex
+
+
 ## For styling

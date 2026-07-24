@@ -1,25 +1,25 @@
 import { Link } from 'react-router-dom';
 import { fitnessResourceCards } from '../../data/fitnessResources';
 
-const getFitnessCategory = (item) => {
-  if (item.toLowerCase().includes('walk') || item.toLowerCase().includes('running') || item.toLowerCase().includes('cardio')) {
-    return 'running';
-  }
-
-  return 'strength';
-};
+const fallbackCard = (plan) => ({
+  title: plan.title,
+  description: plan.description,
+  technique: ['Start with 5 minutes of easy movement.', 'Choose an effort that lets you keep good form.', 'Increase time or difficulty gradually, week to week.'],
+  examples: ['Try 20 minutes at a comfortable pace', 'Schedule 2–3 sessions each week'],
+  classes: ['Community recreation classes', 'Beginner-friendly studio sessions'],
+});
 
 export default function FitnessTab({ recommendations }) {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
-        {recommendations.fitnessRecommendations.map((item) => {
-          const category = getFitnessCategory(item);
-          const card = fitnessResourceCards[category][0];
+        {recommendations.fitnessPlans.map((plan) => {
+          const category = plan.category;
+          const card = fitnessResourceCards[category]?.[0] || fallbackCard(plan);
 
           return (
-            <article key={item} className="card bg-base-200 shadow overflow-hidden">
-              <img src={card.image} alt={card.title} className="h-52 w-full object-cover" />
+            <article key={category} className="card bg-base-200 shadow overflow-hidden">
+              {card.image && <img src={card.image} alt={card.title} className="h-52 w-full object-cover" />}
               <div className="card-body">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="card-title">{card.title}</h3>
@@ -44,8 +44,8 @@ export default function FitnessTab({ recommendations }) {
                     <li key={className}>• {className}</li>
                   ))}
                 </ul>
-                <Link to="/dashboard/resources" className="btn btn-outline btn-sm mt-4">
-                  See {category} resources
+                <Link to={`/dashboard/resources?activity=${category}`} className="btn btn-outline btn-sm mt-4">
+                  See local activity resources
                 </Link>
               </div>
             </article>
