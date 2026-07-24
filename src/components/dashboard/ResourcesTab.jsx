@@ -16,6 +16,10 @@ export default function ResourcesTab({ recommendations }) {
   const resourceList = fitnessLocationGuides[selectedCategory][selectedLocation] || fitnessLocationGuides[selectedCategory].default;
   const supplementList = supplementLocationGuides[selectedLocation] || supplementLocationGuides.default;
 
+  const handleTopicClick = (resourceKey) => {
+    document.getElementById(resourceKey)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
       <div className="card bg-base-200 shadow">
@@ -23,7 +27,11 @@ export default function ResourcesTab({ recommendations }) {
           <h3 className="card-title">Resource topics</h3>
           <div className="mt-4 grid gap-2">
             {Object.keys(resourceCatalog).map((resourceKey) => (
-              <button key={resourceKey} className="btn btn-outline justify-start">
+              <button
+                key={resourceKey}
+                className="btn btn-outline justify-start"
+                onClick={() => handleTopicClick(resourceKey)}
+              >
                 {resourceCatalog[resourceKey].title}
               </button>
             ))}
@@ -31,7 +39,7 @@ export default function ResourcesTab({ recommendations }) {
         </div>
       </div>
 
-      <div className="card bg-base-200 shadow">
+      <div id="food" className="card bg-base-200 shadow">
         <div className="card-body">
           <h3 className="card-title">Food resources</h3>
           <p className="mt-2 text-sm">{resourceCatalog.food.details}</p>
@@ -44,7 +52,7 @@ export default function ResourcesTab({ recommendations }) {
             </ul>
           </div>
 
-          <div className="mt-6">
+          <div id="fitness" className="mt-6">
             <h3 className="card-title">Fitness resources</h3>
             <p className="mt-2 text-sm">Pick a city and a workout type to see places to train locally.</p>
 
@@ -95,7 +103,7 @@ export default function ResourcesTab({ recommendations }) {
               </div>
             </div>
 
-            <div className="mt-6 rounded-2xl bg-base-100 p-4">
+            <div id="supplements" className="mt-6 rounded-2xl bg-base-100 p-4">
               <h4 className="font-semibold">Supplement shopping spots</h4>
               <p className="mt-2 text-sm">Browse local places to pick up protein, vitamins, recovery supplements, and everyday wellness basics.</p>
               <div className="mt-3 space-y-3">
@@ -113,6 +121,13 @@ export default function ResourcesTab({ recommendations }) {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div id="recipes" className="card bg-base-200 shadow">
+        <div className="card-body">
+          <h3 className="card-title">Recipe ideas</h3>
+          <p className="mt-2 text-sm">{resourceCatalog.recipes.details}</p>
         </div>
       </div>
     </div>

@@ -13,9 +13,19 @@ export default function SupplementsTab({ recommendations }) {
             <div className="card-body">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="card-title">{item.name}</h3>
-                <span className="badge badge-primary">{item.focus}</span>
+                <div className="flex flex-wrap gap-2 justify-end">
+                  {(item.bestFor || []).map((label) => (
+                    <span key={label} className="badge badge-primary">{label}</span>
+                  ))}
+                </div>
               </div>
               <p className="mt-2 text-sm">{item.description}</p>
+
+              <div className="mt-3 rounded-2xl bg-base-100 p-3">
+                <p className="font-semibold text-sm">Why this may help</p>
+                <p className="mt-1 text-sm opacity-80">{item.whyItMayHelp}</p>
+              </div>
+
               <ul className="mt-3 space-y-2 text-sm opacity-80">
                 {item.benefits.map((benefit) => (
                   <li key={benefit} className="rounded-xl bg-base-100 p-2">• {benefit}</li>
