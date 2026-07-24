@@ -119,6 +119,62 @@ export const supplementLocationGuides = {
   ],
 };
 
+export const foodServiceGuides = {
+  delivery: [
+    {
+      name: 'Freshly',
+      type: 'Prepared meal delivery',
+      serves: 'Balance-friendly, high-protein, and low-prep plans',
+      distanceMiles: 6,
+      website: 'https://www.freshly.com/',
+    },
+    {
+      name: 'HelloFresh',
+      type: 'Meal kits and dinner planning',
+      serves: 'Flexible proteins and produce-forward plans',
+      distanceMiles: 12,
+      website: 'https://www.hellofresh.com/',
+    },
+    {
+      name: 'Sunbasket',
+      type: 'Clean ingredient meal delivery',
+      serves: 'Lower-carb, higher-protein, and Mediterranean styles',
+      distanceMiles: 18,
+      website: 'https://www.sunbasket.com/',
+    },
+  ],
+  chefs: [
+    {
+      name: 'Mosaic Chef Co.',
+      type: 'Personal chef service',
+      serves: 'High-protein meal prep and goal-driven weekly menus',
+      distanceMiles: 8,
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'The Protein Prep Club',
+      type: 'Chef-led meal prep',
+      serves: 'Muscle-gain and balanced nutrition support',
+      distanceMiles: 14,
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'Healthy Harvest Chef',
+      type: 'Private chef and custom plan support',
+      serves: 'Weight-loss and habit-based dietary support',
+      distanceMiles: 22,
+      website: 'https://www.example.org/',
+    },
+  ],
+};
+
+export const stateCityOptions = {
+  'New York': ['New York, NY', 'Brooklyn, NY', 'Buffalo, NY'],
+  'California': ['Los Angeles, CA', 'San Francisco, CA', 'San Diego, CA'],
+  'Texas': ['Houston, TX', 'Austin, TX', 'Dallas, TX'],
+  'Florida': ['Miami, FL', 'Orlando, FL', 'Tampa, FL'],
+};
+
 export const fitnessLocationGuides = {
   running: {
     'New York, NY': [
@@ -127,6 +183,7 @@ export const fitnessLocationGuides = {
         type: 'HIIT Running and strength classes',
         address: '19th St & 12th Ave, New York, NY',
         hours: 'Mon–Sun · 6:00 AM – 10:00 PM',
+        distanceMiles: 5,
         website: 'https://www.chelseapiers.com/',
       },
       {
@@ -134,6 +191,7 @@ export const fitnessLocationGuides = {
         type: 'Tempo and track training',
         address: 'Van Cortlandt Park, Bronx, NY',
         hours: 'Tue & Thu · 6:00 PM – 8:00 PM',
+        distanceMiles: 9,
         website: 'https://www.bronxtrackclub.org/',
       },
       {
@@ -141,6 +199,7 @@ export const fitnessLocationGuides = {
         type: 'Running clubs and coached sessions',
         address: '320 W 57th St, New York, NY',
         hours: 'Mon–Sat · 9:00 AM – 6:00 PM',
+        distanceMiles: 7,
         website: 'https://www.nyrr.org/',
       },
     ],
@@ -150,6 +209,7 @@ export const fitnessLocationGuides = {
         type: 'Running and endurance sessions',
         address: 'Prospect Park, Brooklyn, NY',
         hours: 'Sat · 8:00 AM – 10:00 AM',
+        distanceMiles: 5,
         website: 'https://www.prospectparkrunning.com/',
       },
       {
@@ -157,6 +217,7 @@ export const fitnessLocationGuides = {
         type: 'Track training and pacing support',
         address: 'Brooklyn, NY',
         hours: 'Tue & Thu · 6:30 PM – 8:00 PM',
+        distanceMiles: 8,
         website: 'https://brooklyntrackclub.com/',
       },
       {
@@ -164,6 +225,7 @@ export const fitnessLocationGuides = {
         type: 'Group runs and beginner coaching',
         address: 'Brooklyn, NY',
         hours: 'Mon–Fri · 5:30 PM – 7:30 PM',
+        distanceMiles: 11,
         website: 'https://www.example.org/',
       },
     ],
@@ -180,6 +242,7 @@ export const fitnessLocationGuides = {
         type: 'Group running and pacing support',
         address: 'Park trail',
         hours: 'Sun · 7:00 AM – 9:00 AM',
+        distanceMiles: 22,
         website: 'https://www.example.org/',
       },
     ],
@@ -191,6 +254,7 @@ export const fitnessLocationGuides = {
         type: 'Strength classes and coaching',
         address: 'West 23rd St, New York, NY',
         hours: 'Mon–Sun · 5:00 AM – 11:00 PM',
+        distanceMiles: 6,
         website: 'https://www.equinox.com/',
       },
       {
@@ -198,6 +262,7 @@ export const fitnessLocationGuides = {
         type: 'Barbell and resistance classes',
         address: 'Midtown, New York, NY',
         hours: 'Mon–Sat · 6:00 AM – 9:00 PM',
+        distanceMiles: 7,
         website: 'https://www.bodypump.com/',
       },
       {
@@ -205,6 +270,7 @@ export const fitnessLocationGuides = {
         type: 'HIIT strength and conditioning',
         address: 'SoHo, New York, NY',
         hours: 'Mon–Fri · 6:00 AM – 8:00 PM',
+        distanceMiles: 4,
         website: 'https://www.crossfit.com/',
       },
     ],
@@ -214,6 +280,7 @@ export const fitnessLocationGuides = {
         type: 'HIIT and strength classes',
         address: 'Fort Greene, Brooklyn, NY',
         hours: 'Mon–Sat · 6:00 AM – 8:00 PM',
+        distanceMiles: 6,
         website: 'https://www.crossfit.com/',
       },
       {
@@ -221,6 +288,7 @@ export const fitnessLocationGuides = {
         type: 'Bodyweight and mobility classes',
         address: 'Williamsburg, Brooklyn, NY',
         hours: 'Mon–Sun · 7:00 AM – 7:00 PM',
+        distanceMiles: 9,
         website: 'https://www.example.org/',
       },
       {
@@ -228,6 +296,7 @@ export const fitnessLocationGuides = {
         type: 'Small-group strength coaching',
         address: 'Park Slope, Brooklyn, NY',
         hours: 'Tue–Sun · 9:00 AM – 6:00 PM',
+        distanceMiles: 10,
         website: 'https://www.example.org/',
       },
     ],
@@ -244,6 +313,7 @@ export const fitnessLocationGuides = {
         type: 'Accessible movement classes',
         address: 'Near your home',
         hours: 'Mon–Fri · 6:00 PM – 8:00 PM',
+        distanceMiles: 18,
         website: 'https://www.example.org/',
       },
     ],

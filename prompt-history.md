@@ -13,6 +13,8 @@ The app should include a landing page that describes the services offered and a 
 
 -I want the fitness resources to be under the resources tab not the fitness one. You can put. links on the bottom of the fitness one so that it chooses resources dependent on what workout they want to do.  I would like multiple resources for each type of activity listing the name, location and hours and a link to that businesses website for each resource.
 
+-Under food resouces there should also be a list of meal delivery places and personal chefs that meet the needs of the diet plan the user is recommended.  Maybe have a button for each choice that toggles the results.  For the fitness resources do dynamic dropdowns where the user chooses a state and then the major citys in that state show up.  Then there could be a within so many miles of that city to make the search more refined.
+
 ## When I inquired a problem with buttons firing correctly and the content on naviagtion
 
 - When i press the get started button I should be able to run through the survey. The reset mock data should put mock data in there if you dont want to type in your own data. Reset mock data should rest mock data and take you to the dashboard. On the dashboard the BMI should show their range and also the range that is healthy using a colored bar or similar. I would like the navigational buttons to go to something more robust.  The food one should start with having reccomended recipies with a list of recipes that include their foods they choose along with like foods to help them accomplish their goals.
