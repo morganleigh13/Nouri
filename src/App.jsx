@@ -10,6 +10,7 @@ import FoodTab from './components/dashboard/FoodTab';
 import FitnessTab from './components/dashboard/FitnessTab';
 import SupplementsTab from './components/dashboard/SupplementsTab';
 import ResourcesTab from './components/dashboard/ResourcesTab';
+import ThemePicker from './components/ThemePicker';
 import { buildRecommendations } from './utils/recommendationEngine';
 import './App.css';
 
@@ -56,38 +57,41 @@ function App() {
   };
 
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage onResetMockData={resetFlow} />} />
-      <Route
-        path="/survey"
-        element={
-          <SurveyPage
-            survey={survey}
-            summaryText={summaryText}
-            onToggleOption={toggleOption}
-            onFieldChange={handleFieldChange}
-            onFinishSurvey={finishSurvey}
-          />
-        }
-      />
-      <Route
-        path="/dashboard/*"
-        element={
-          <DashboardPage
-            summaryText={summaryText}
-            onBackToLanding={() => navigate('/')}
-          />
-        }
-      >
-        <Route path="overview" element={<OverviewTab survey={survey} recommendations={recommendations} />} />
-        <Route path="food" element={<FoodTab recommendations={recommendations} />} />
-        <Route path="fitness" element={<FitnessTab recommendations={recommendations} />} />
-        <Route path="supplements" element={<SupplementsTab recommendations={recommendations} />} />
-        <Route path="resources" element={<ResourcesTab recommendations={recommendations} />} />
-        <Route index element={<Navigate to="overview" replace />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <ThemePicker />
+      <Routes>
+        <Route path="/" element={<LandingPage onResetMockData={resetFlow} />} />
+        <Route
+          path="/survey"
+          element={
+            <SurveyPage
+              survey={survey}
+              summaryText={summaryText}
+              onToggleOption={toggleOption}
+              onFieldChange={handleFieldChange}
+              onFinishSurvey={finishSurvey}
+            />
+          }
+        />
+        <Route
+          path="/dashboard/*"
+          element={
+            <DashboardPage
+              summaryText={summaryText}
+              onBackToLanding={() => navigate('/')}
+            />
+          }
+        >
+          <Route path="overview" element={<OverviewTab survey={survey} recommendations={recommendations} />} />
+          <Route path="food" element={<FoodTab recommendations={recommendations} />} />
+          <Route path="fitness" element={<FitnessTab recommendations={recommendations} />} />
+          <Route path="supplements" element={<SupplementsTab recommendations={recommendations} />} />
+          <Route path="resources" element={<ResourcesTab recommendations={recommendations} />} />
+          <Route index element={<Navigate to="overview" replace />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
 

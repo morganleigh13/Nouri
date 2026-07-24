@@ -1,12 +1,77 @@
 @import 'tailwindcss';
-@plugin 'daisyui';
+@plugin 'daisyui' {
+  themes: emerald, corporate, sunset;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'nouri';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #fffdf8;
+  --color-base-200: #f1f5ee;
+  --color-base-300: #dce7dc;
+  --color-base-content: #17251c;
+  --color-primary: #256b50;
+  --color-primary-content: #ffffff;
+  --color-secondary: #2e5868;
+  --color-secondary-content: #ffffff;
+  --color-accent: #8f5527;
+  --color-accent-content: #ffffff;
+  --color-neutral: #24372c;
+  --color-neutral-content: #ffffff;
+  --color-info: #1d6381;
+  --color-info-content: #ffffff;
+  --color-success: #2d7548;
+  --color-success-content: #ffffff;
+  --color-warning: #9a6118;
+  --color-warning-content: #ffffff;
+  --color-error: #ad3f3f;
+  --color-error-content: #ffffff;
+  --radius-selector: 1rem;
+  --radius-field: 9999px;
+  --radius-box: 1.5rem;
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'nouri-night';
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #102019;
+  --color-base-200: #192b22;
+  --color-base-300: #294035;
+  --color-base-content: #eff7ef;
+  --color-primary: #8bd4aa;
+  --color-primary-content: #102019;
+  --color-secondary: #8bcbdb;
+  --color-secondary-content: #10242b;
+  --color-accent: #efc388;
+  --color-accent-content: #35200e;
+  --color-neutral: #d9eadb;
+  --color-neutral-content: #17251c;
+  --color-info: #87cde4;
+  --color-info-content: #10242b;
+  --color-success: #92d9a8;
+  --color-success-content: #112319;
+  --color-warning: #f0c979;
+  --color-warning-content: #392409;
+  --color-error: #f3a0a0;
+  --color-error-content: #3d1111;
+  --radius-selector: 1rem;
+  --radius-field: 9999px;
+  --radius-box: 1.5rem;
+  --depth: 1;
+  --noise: 0;
+}
 
 :root {
   font-family: Inter, system-ui, sans-serif;
+  font-size: 17px;
   line-height: 1.5;
   font-weight: 400;
-  color: #111827;
-  background: #f3f4f6;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
