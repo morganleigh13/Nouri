@@ -2,6 +2,7 @@ import {
   foodRecommendations as foodCopy,
   fitnessRecommendations as fitnessCopy,
   supplementRecommendations as supplementCopy,
+  supplementExtraRecommendations as supplementExtraCopy,
   micronutrientTargets,
 } from '../data/recommendationData';
 
@@ -98,6 +99,7 @@ export function buildRecommendations(survey) {
     foodRecommendations: foodCopy[goal] || foodCopy['Eat healthier'],
     fitnessRecommendations: fitnessCopy[goal] || fitnessCopy['Eat healthier'],
     supplementRecommendations: supplementCopy[goal] || supplementCopy['Eat healthier'],
+    supplementExtraRecommendations: supplementExtraCopy[goal] || supplementExtraCopy['Eat healthier'],
     recipeCards,
     preferredFoods: safeFoodOptions,
     macroTargets: {

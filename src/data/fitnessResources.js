@@ -54,6 +54,71 @@ export const fitnessResourceCards = {
   ],
 };
 
+export const supplementLocationGuides = {
+  'New York, NY': [
+    {
+      name: 'Nourish Market',
+      type: 'Whole-food supplements and protein powders',
+      address: 'Chelsea, New York, NY',
+      hours: 'Mon–Sun · 9:00 AM – 8:00 PM',
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'Green Wellness Pharmacy',
+      type: 'Clinical wellness and specialty supplement advice',
+      address: 'Upper West Side, New York, NY',
+      hours: 'Mon–Sat · 8:30 AM – 7:00 PM',
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'The Supplement Studio',
+      type: 'Protein, omega-3, and recovery products',
+      address: 'SoHo, New York, NY',
+      hours: 'Mon–Sun · 10:00 AM – 9:00 PM',
+      website: 'https://www.example.org/',
+    },
+  ],
+  'Brooklyn, NY': [
+    {
+      name: 'Brooklyn Health Pantry',
+      type: 'Supplements, powders, and wellness snacks',
+      address: 'Park Slope, Brooklyn, NY',
+      hours: 'Mon–Sun · 9:00 AM – 7:00 PM',
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'Plant + Protein Market',
+      type: 'Plant-based protein and recovery products',
+      address: 'Williamsburg, Brooklyn, NY',
+      hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'Wellness Collective',
+      type: 'Vitamins, adaptogens, and sleep support',
+      address: 'Fort Greene, Brooklyn, NY',
+      hours: 'Tue–Sun · 11:00 AM – 6:00 PM',
+      website: 'https://www.example.org/',
+    },
+  ],
+  default: [
+    {
+      name: 'Local wellness shop',
+      type: 'Daily vitamins and protein options',
+      address: 'City center',
+      hours: 'Mon–Sat · 9:00 AM – 6:00 PM',
+      website: 'https://www.example.org/',
+    },
+    {
+      name: 'Neighborhood supplement market',
+      type: 'Recovery and meal-support products',
+      address: 'Near your home',
+      hours: 'Tue–Sun · 10:00 AM – 6:00 PM',
+      website: 'https://www.example.org/',
+    },
+  ],
+};
+
 export const fitnessLocationGuides = {
   running: {
     'New York, NY': [
