@@ -40,3 +40,5 @@ The app should include a landing page that describes the services offered and a 
 ## For styling
 
 - I would like you to use DaisyUI along with tailwindCss to give my website a themes dropdown where users can choose from a custom light and dark mode using Nouris name in the title and a few of daisyUIs most popular color themes that would go well with a holistic health site.  Search the internet and come up with a few color schemes that would be appealing to both men and woman, making sure there is good contrast so the font is easy to read and there is depth. The light and dark mode should also compliment each other. I like rounded buttons and a little bigger of a font.
+
+- I would also like borders areound the cards to give them a 3-D effect.  I want the landing page to say something different.  The Name of the site should stand out more.  The included services list items shouldnt look like buttons.  There should be images or pictures in the background, maybe bamboo or vines. Something decorative.

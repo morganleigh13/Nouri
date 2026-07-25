@@ -14,7 +14,7 @@ export default function SupplementsTab({ recommendations }) {
               <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
             </figure>
             <div className="card-body">
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex flex-wrap items-start justify-between gap-3">
                 <h3 className="card-title">{item.name}</h3>
                 <div className="flex flex-wrap gap-2 justify-end">
                   {(item.bestFor || []).map((label) => (

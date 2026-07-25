@@ -11,9 +11,9 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
   const previousStep = () => setStepIndex((index) => Math.max(index - 1, 0));
 
   return (
-    <div className="min-h-screen bg-base-200 p-4 text-base-content lg:p-8">
-      <div className="mx-auto max-w-4xl rounded-3xl bg-base-100 p-6 shadow-xl">
-        <div className="mb-6 flex items-center justify-between gap-4">
+    <div className="min-h-screen bg-base-200 px-4 pb-4 pt-20 text-base-content sm:p-6 lg:p-8">
+      <div className="mx-auto max-w-4xl rounded-box bg-base-100 p-5 shadow-xl sm:p-6">
+        <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Step {stepIndex + 1} of {steps.length}</p>
             <h2 className="text-2xl font-bold">{step.title}</h2>
@@ -70,14 +70,14 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
           </div>
         )}
 
-        <div className="mt-8 flex flex-wrap justify-between gap-3">
-          <button className="btn btn-ghost" onClick={previousStep} disabled={stepIndex === 0}>Previous</button>
+        <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <button className="btn btn-ghost w-full sm:w-auto" onClick={previousStep} disabled={stepIndex === 0}>Previous</button>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row">
             {stepIndex < steps.length - 1 ? (
-              <button className="btn btn-primary" onClick={nextStep}>Next</button>
+              <button className="btn btn-primary w-full sm:w-auto" onClick={nextStep}>Next</button>
             ) : (
-              <button className="btn btn-success" onClick={onFinishSurvey}>Finish survey</button>
+              <button className="btn btn-success w-full sm:w-auto" onClick={onFinishSurvey}>Finish survey</button>
             )}
           </div>
         </div>

@@ -10,9 +10,9 @@ const navItems = [
 
 export default function DashboardPage({ summaryText, onBackToLanding }) {
   return (
-    <div className="min-h-screen bg-base-200 p-4 text-base-content lg:p-8">
-      <div className="mx-auto max-w-6xl rounded-3xl bg-base-100 p-6 shadow-xl">
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+    <div className="min-h-screen bg-base-200 px-4 pb-4 pt-20 text-base-content sm:p-6 lg:p-8">
+      <div className="mx-auto max-w-6xl rounded-box bg-base-100 p-5 shadow-xl sm:p-6">
+        <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Nouri dashboard</p>
             <h2 className="text-2xl font-bold">Your personalized mock wellness profile</h2>
@@ -20,7 +20,7 @@ export default function DashboardPage({ summaryText, onBackToLanding }) {
           <button className="btn btn-ghost btn-sm" onClick={onBackToLanding}>Back to landing</button>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-5 mb-6">
+        <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
           {navItems.map((item) => (
             <NavLink
               key={item.key}
