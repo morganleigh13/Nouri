@@ -1,4 +1,30 @@
 export const fitnessResourceCards = {
+  walking: [
+    {
+      title: 'Brisk Walking',
+      image: 'https://images.unsplash.com/photo-1545346315-f4c47e3e1b9c?auto=format&fit=crop&w=900&q=80',
+      description: 'A steady, low-impact way to build consistency and everyday movement habits.',
+      technique: [
+        'Begin with a relaxed pace that still feels like a workout.',
+        'Aim for 20–30 minutes most days and keep your posture tall.',
+        'Add a little speed or incline over time as your stamina improves.',
+      ],
+      examples: ['A brisk 25-minute neighborhood walk', 'A post-meal walk after lunch or dinner'],
+      classes: ['Walking groups', 'Community park strolls', 'Beginner-friendly pacing clubs'],
+    },
+    {
+      title: 'Walk + Mobility',
+      image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
+      description: 'A simple mix of walking and gentle mobility for better energy and recovery.',
+      technique: [
+        'Walk at a comfortable pace and add a few mobility drills at the start or end.',
+        'Use short stretches for your calves, hips, and shoulders.',
+        'Keep the routine easy enough to repeat consistently through the week.',
+      ],
+      examples: ['A 20-minute walk with mobility breaks', 'A short outdoor walk followed by stretches'],
+      classes: ['Mobility meetups', 'Outdoor walking clubs', 'Recovery-focused classes'],
+    },
+  ],
   running: [
     {
       title: 'HIIT Running',
@@ -26,10 +52,36 @@ export const fitnessResourceCards = {
       classes: ['Marathon prep clinics', 'Group tempo runs'],
     },
   ],
+  yoga: [
+    {
+      title: 'Gentle Yoga Flow',
+      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
+      description: 'A calming flow focused on mobility, balance, and a grounded routine.',
+      technique: [
+        'Begin with a few minutes of breathwork and easy stretching.',
+        'Move slowly through foundational poses and hold each one comfortably.',
+        'Finish with a brief relaxation or meditation segment.',
+      ],
+      examples: ['A 20-minute morning yoga flow', 'A gentle evening stretch class'],
+      classes: ['Community yoga classes', 'Beginner-friendly studio sessions'],
+    },
+    {
+      title: 'Yoga + Core',
+      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+      description: 'A blend of yoga and core strength for posture, stability, and recovery.',
+      technique: [
+        'Pair balance poses with simple core work and controlled breathing.',
+        'Move at a pace that feels restorative rather than rushed.',
+        'Use short holds and keep your form steady.',
+      ],
+      examples: ['A 30-minute yoga and core circuit', 'A weekend strength-and-stretch class'],
+      classes: ['Core-focused yoga', 'Mindful strength sessions'],
+    },
+  ],
   strength: [
     {
       title: 'Strength Classes',
-      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80',
       description: 'Popular class formats that provide structure and accountability.',
       technique: [
         'Start with a coach-led class if you are new to lifting.',
@@ -50,6 +102,110 @@ export const fitnessResourceCards = {
       ],
       examples: ['Push-ups', 'Split squats', 'Glute bridges', 'Bear crawl holds'],
       classes: ['Pilates classes', 'Mobility and strength meetups'],
+    },
+  ],
+  cycling: [
+    {
+      title: 'Steady Cycling',
+      image: 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=900&q=80',
+      description: 'A consistent cardio option that is easy to scale from casual rides to longer efforts.',
+      technique: [
+        'Pick a cadence that feels smooth and sustainable.',
+        'Start with moderate effort and increase time before intensity.',
+        'Use your gears to stay comfortable and avoid overstraining.',
+      ],
+      examples: ['A 30-minute steady ride', 'A weekend scenic cycling loop'],
+      classes: ['Spin classes', 'Cycling clubs', 'Outdoor ride groups'],
+    },
+    {
+      title: 'Cadence Intervals',
+      image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80',
+      description: 'A structured workout that alternates effort and recovery for better endurance.',
+      technique: [
+        'Alternate challenging pushes with easy recovery periods.',
+        'Keep your posture tall and your breathing steady.',
+        'Use a shorter interval block if you are new to the format.',
+      ],
+      examples: ['6 rounds of 1 minute hard / 2 minutes easy', 'Short indoor cycling intervals'],
+      classes: ['Indoor spin classes', 'Performance-focused cycling'],
+    },
+  ],
+  dance: [
+    {
+      title: 'Dance Cardio',
+      image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80',
+      description: 'An upbeat, rhythm-based way to move, sweat, and feel energized.',
+      technique: [
+        'Choose a class with simple choreography and a steady beat.',
+        'Focus on keeping your movement light and playful.',
+        'Build up to longer sessions as your confidence grows.',
+      ],
+      examples: ['A beginner dance cardio class', 'A social dance fitness session'],
+      classes: ['Dance fitness studios', 'Group dance classes'],
+    },
+    {
+      title: 'Low-Impact Dance',
+      image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80',
+      description: 'A lower-stress version of dance cardio that still brings energy and rhythm.',
+      technique: [
+        'Pick a slower song and move with control and balance.',
+        'Use smaller steps and more recovery between bursts.',
+        'Focus on consistency and enjoyment rather than intensity.',
+      ],
+      examples: ['A gentle dance class', 'A home dance routine with music'],
+      classes: ['Dance wellness classes', 'Community movement sessions'],
+    },
+  ],
+  pilates: [
+    {
+      title: 'Pilates Foundations',
+      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+      description: 'A core and posture-focused practice for strength, control, and mobility.',
+      technique: [
+        'Start with slower reps and focus on alignment.',
+        'Use the breath to support your movement and stability.',
+        'Build gradually toward longer sets or more challenging variations.',
+      ],
+      examples: ['A beginner pilates class', 'A short core and posture routine'],
+      classes: ['Pilates studios', 'Reformer classes'],
+    },
+    {
+      title: 'Pilates + Mobility',
+      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+      description: 'A restorative format that pairs body awareness with a little extra mobility.',
+      technique: [
+        'Blend simplified pilates moves with light stretching.',
+        'Pause and reset with each breath rather than rushing through the flow.',
+        'Aim for smooth movement and steady control.',
+      ],
+      examples: ['A mobility-focused pilates class', 'A home pilates and stretch routine'],
+      classes: ['Pilates and mobility workshops', 'Recovery classes'],
+    },
+  ],
+  hiit: [
+    {
+      title: 'Low-Impact HIIT',
+      image: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=900&q=80',
+      description: 'A concise, structured training approach for improving fitness without needing a long session.',
+      technique: [
+        'Alternate short bursts of effort with active recovery.',
+        'Keep the movement controlled and easy to repeat.',
+        'Use a pace that still allows good form.',
+      ],
+      examples: ['A 20-minute HIIT circuit', 'A short interval session at a studio'],
+      classes: ['HIIT studios', 'Circuit training classes'],
+    },
+    {
+      title: 'HIIT + Strength',
+      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+      description: 'A hybrid format that mixes interval work with simple resistance training.',
+      technique: [
+        'Pair short bursts with bodyweight strength moves.',
+        'Keep the rest periods short and focused on form.',
+        'Choose a class that feels challenging but sustainable.',
+      ],
+      examples: ['A circuit class with squats and intervals', 'A strength-plus-HIIT session'],
+      classes: ['Hybrid fitness classes', 'Strength interval classes'],
     },
   ],
 };
@@ -173,6 +329,10 @@ export const stateCityOptions = {
   'California': ['Los Angeles, CA', 'San Francisco, CA', 'San Diego, CA'],
   'Texas': ['Houston, TX', 'Austin, TX', 'Dallas, TX'],
   'Florida': ['Miami, FL', 'Orlando, FL', 'Tampa, FL'],
+  'Colorado': ['Denver, CO', 'Boulder, CO', 'Colorado Springs, CO'],
+  'Illinois': ['Chicago, IL', 'Springfield, IL', 'Naperville, IL'],
+  'Washington': ['Seattle, WA', 'Spokane, WA', 'Bellevue, WA'],
+  'Massachusetts': ['Boston, MA', 'Cambridge, MA', 'Worcester, MA'],
 };
 
 export const fitnessLocationGuides = {
@@ -226,6 +386,78 @@ export const fitnessLocationGuides = {
         address: 'Brooklyn, NY',
         hours: 'Mon–Fri · 5:30 PM – 7:30 PM',
         distanceMiles: 11,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'Los Angeles, CA': [
+      {
+        name: 'Runyon Canyon Running Club',
+        type: 'Trail and city running meetups',
+        address: 'Runyon Canyon, Los Angeles, CA',
+        hours: 'Sat · 7:00 AM – 9:00 AM',
+        distanceMiles: 6,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Santa Monica Beach Run',
+        type: 'Coastal runs and pacing groups',
+        address: 'Santa Monica, Los Angeles, CA',
+        hours: 'Sun · 8:00 AM – 10:00 AM',
+        distanceMiles: 9,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'San Francisco, CA': [
+      {
+        name: 'Golden Gate Running Collective',
+        type: 'Lakefront and hill running sessions',
+        address: 'Golden Gate Park, San Francisco, CA',
+        hours: 'Wed · 6:00 PM – 7:30 PM',
+        distanceMiles: 5,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Embarcadero Pace Group',
+        type: 'Speed and endurance runs',
+        address: 'Embarcadero, San Francisco, CA',
+        hours: 'Sat · 8:00 AM – 10:00 AM',
+        distanceMiles: 7,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'Houston, TX': [
+      {
+        name: 'Buffalo Bayou Running Crew',
+        type: 'Trail and urban running',
+        address: 'Buffalo Bayou, Houston, TX',
+        hours: 'Sun · 7:30 AM – 9:30 AM',
+        distanceMiles: 8,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Memorial Park Pace Club',
+        type: 'Beginner-friendly run sessions',
+        address: 'Memorial Park, Houston, TX',
+        hours: 'Tue · 6:00 PM – 7:00 PM',
+        distanceMiles: 4,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'Denver, CO': [
+      {
+        name: 'Cherry Creek Running Club',
+        type: 'Road and tempo sessions',
+        address: 'Cherry Creek, Denver, CO',
+        hours: 'Thu · 6:00 PM – 7:30 PM',
+        distanceMiles: 6,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'City Park Pace Group',
+        type: 'Community run training',
+        address: 'City Park, Denver, CO',
+        hours: 'Sat · 8:00 AM – 10:00 AM',
+        distanceMiles: 5,
         website: 'https://www.example.org/',
       },
     ],
@@ -297,6 +529,78 @@ export const fitnessLocationGuides = {
         address: 'Park Slope, Brooklyn, NY',
         hours: 'Tue–Sun · 9:00 AM – 6:00 PM',
         distanceMiles: 10,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'Los Angeles, CA': [
+      {
+        name: 'West Hollywood Strength Lab',
+        type: 'Small-group strength coaching',
+        address: 'West Hollywood, Los Angeles, CA',
+        hours: 'Mon–Sat · 6:00 AM – 8:00 PM',
+        distanceMiles: 7,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Downtown Functional Fitness',
+        type: 'Strength and conditioning classes',
+        address: 'Downtown Los Angeles, CA',
+        hours: 'Mon–Sun · 5:30 AM – 9:00 PM',
+        distanceMiles: 6,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'San Francisco, CA': [
+      {
+        name: 'North Beach Strength Studio',
+        type: 'Barbell and bodyweight strength',
+        address: 'North Beach, San Francisco, CA',
+        hours: 'Mon–Fri · 6:00 AM – 8:00 PM',
+        distanceMiles: 5,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Mission Fitness Collective',
+        type: 'Strength and mobility training',
+        address: 'Mission District, San Francisco, CA',
+        hours: 'Tue–Sun · 7:00 AM – 7:00 PM',
+        distanceMiles: 8,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'Houston, TX': [
+      {
+        name: 'The Heights Strength Club',
+        type: 'Coached strength and conditioning',
+        address: 'The Heights, Houston, TX',
+        hours: 'Mon–Sat · 5:30 AM – 9:00 PM',
+        distanceMiles: 7,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Montrose Power House',
+        type: 'Barbell and circuit classes',
+        address: 'Montrose, Houston, TX',
+        hours: 'Mon–Sun · 6:00 AM – 8:00 PM',
+        distanceMiles: 6,
+        website: 'https://www.example.org/',
+      },
+    ],
+    'Denver, CO': [
+      {
+        name: 'LoDo Strength Studio',
+        type: 'Strength coaching and group classes',
+        address: 'LoDo, Denver, CO',
+        hours: 'Mon–Sat · 6:00 AM – 8:00 PM',
+        distanceMiles: 4,
+        website: 'https://www.example.org/',
+      },
+      {
+        name: 'Boulder Fit Collective',
+        type: 'Strength and mobility classes',
+        address: 'Boulder, CO',
+        hours: 'Mon–Sun · 5:30 AM – 8:00 PM',
+        distanceMiles: 9,
         website: 'https://www.example.org/',
       },
     ],

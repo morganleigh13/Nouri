@@ -73,6 +73,12 @@ function conflictsWithPlan(text, allergies, restrictions) {
   );
 }
 
+const recipeImageMap = {
+  Breakfast: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80',
+  Lunch: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
+  Dinner: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80',
+};
+
 function makeRecipe(template, allergies, restrictions, goal) {
   const replacements = Object.entries(template.alternatives || {})
     .filter(([rule]) => allergies.includes(rule) || restrictions.includes(rule))
@@ -83,7 +89,7 @@ function makeRecipe(template, allergies, restrictions, goal) {
 
   return {
     ...template,
-    image: template.meal === 'Breakfast' ? '🥣' : template.meal === 'Lunch' ? '🌯' : '🥗',
+    image: recipeImageMap[template.meal] || 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80',
     ingredients: safeIngredients,
     notes: [`Built as a mock recipe for your ${goal.toLowerCase()} goal. Confirm packaged ingredients and portions for your own needs.`],
   };

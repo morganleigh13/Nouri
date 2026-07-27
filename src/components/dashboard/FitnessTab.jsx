@@ -1,12 +1,26 @@
 import { Link } from 'react-router-dom';
 import { fitnessResourceCards } from '../../data/fitnessResources';
 
+const walkingImage = 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=900&q=80';
+
+const categoryImages = {
+  walking: walkingImage,
+  running: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80',
+  yoga: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
+  strength: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80',
+  cycling: 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=900&q=80',
+  dance: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80',
+  pilates: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+  hiit: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=900&q=80',
+};
+
 const fallbackCard = (plan) => ({
   title: plan.title,
   description: plan.description,
   technique: ['Start with 5 minutes of easy movement.', 'Choose an effort that lets you keep good form.', 'Increase time or difficulty gradually, week to week.'],
   examples: ['Try 20 minutes at a comfortable pace', 'Schedule 2–3 sessions each week'],
   classes: ['Community recreation classes', 'Beginner-friendly studio sessions'],
+  image: categoryImages[plan.category] || 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
 });
 
 export default function FitnessTab({ recommendations }) {
@@ -19,7 +33,7 @@ export default function FitnessTab({ recommendations }) {
 
           return (
             <article key={category} className="card bg-base-200 shadow overflow-hidden">
-              {card.image && <img src={card.image} alt={card.title} className="h-52 w-full object-cover" />}
+              {card.image && <img src={card.image} alt={card.title} className="h-56 w-full object-cover" />}
               <div className="card-body">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="card-title">{card.title}</h3>

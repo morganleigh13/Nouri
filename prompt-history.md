@@ -34,11 +34,12 @@ The app should include a landing page that describes the services offered and a 
 
 - Cursor response: The main improvement I’m making now is the router layout itself: the dashboard should be a true wrapper with nested child routes, rather than the dashboard page owning its own separate route tree.
 
-### Moving onto using codex
-
-
 ## For styling
 
 - I would like you to use DaisyUI along with tailwindCss to give my website a themes dropdown where users can choose from a custom light and dark mode using Nouris name in the title and a few of daisyUIs most popular color themes that would go well with a holistic health site.  Search the internet and come up with a few color schemes that would be appealing to both men and woman, making sure there is good contrast so the font is easy to read and there is depth. The light and dark mode should also compliment each other. I like rounded buttons and a little bigger of a font.
 
 - I would also like borders areound the cards to give them a 3-D effect.  I want the landing page to say something different.  The Name of the site should stand out more.  The included services list items shouldnt look like buttons.  There should be images or pictures in the background, maybe bamboo or vines. Something decorative.
+
+- I would like the background of the dark a shade or two lighter and the background of the light to be a shade darker.  I would also like a smaller theme toggle.  I would like the toggle to say the name of the current theme and have a carrot to open the dropdown and not close unless you double click a theme or click out of the box.
+
+-Make all list items in all themes a different color than the buttons to avoid confusion.

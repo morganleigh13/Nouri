@@ -4,8 +4,14 @@ import { resourceCatalog } from '../../data/resourceCatalog';
 import { fitnessLocationGuides, supplementLocationGuides, foodServiceGuides, stateCityOptions } from '../../data/fitnessResources';
 
 const fitnessCategories = [
+  { key: 'walking', label: 'Walking' },
   { key: 'running', label: 'Running' },
+  { key: 'yoga', label: 'Yoga' },
   { key: 'strength', label: 'Strength' },
+  { key: 'cycling', label: 'Cycling' },
+  { key: 'dance', label: 'Dance' },
+  { key: 'pilates', label: 'Pilates' },
+  { key: 'hiit', label: 'HIIT' },
 ];
 
 const distanceOptions = [5, 10, 20, 50];
@@ -21,11 +27,14 @@ export default function ResourcesTab({ recommendations }) {
   const [selectedCity, setSelectedCity] = useState('New York, NY');
   const [selectedDistance, setSelectedDistance] = useState(20);
   const [selectedCategory, setSelectedCategory] = useState(
-    requestedActivity === 'strength' ? 'strength' : 'running',
+    requestedActivity && fitnessCategories.some((category) => category.key === requestedActivity)
+      ? requestedActivity
+      : 'running',
   );
   const [selectedFoodService, setSelectedFoodService] = useState('delivery');
 
-  const resourceList = fitnessLocationGuides[selectedCategory][selectedCity] || fitnessLocationGuides[selectedCategory].default;
+  const categoryGuide = fitnessLocationGuides[selectedCategory] || fitnessLocationGuides.running;
+  const resourceList = categoryGuide[selectedCity] || categoryGuide.default;
   const supplementList = supplementLocationGuides[selectedCity] || supplementLocationGuides.default;
   const filteredResourceList = resourceList.filter((place) => place.distanceMiles <= selectedDistance);
   const filteredFoodServices = (foodServiceGuides[selectedFoodService] || []).filter((place) => place.distanceMiles <= selectedDistance);

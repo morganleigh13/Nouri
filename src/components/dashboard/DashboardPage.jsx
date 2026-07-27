@@ -33,11 +33,6 @@ export default function DashboardPage({ summaryText, onBackToLanding }) {
         </div>
 
         <Outlet />
-
-        <div className="mt-8 rounded-2xl bg-base-200 p-4 text-sm">
-          <p className="font-semibold">Mock profile preview</p>
-          <p className="mt-2">{summaryText}</p>
-        </div>
       </div>
     </div>
   );

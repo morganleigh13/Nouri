@@ -1,5 +1,95 @@
 .card {
   border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--color-base-content) 8%, transparent);
+}
+
+.card,
+.rounded-2xl,
+.rounded-3xl,
+.rounded-box,
+.alert {
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--color-base-content) 7%, transparent);
+}
+
+.landing-shell {
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 24%, transparent) 0%, transparent 28%),
+    linear-gradient(135deg, var(--color-base-100) 0%, var(--color-base-200) 100%);
+}
+
+.landing-panel {
+  border: 1px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--color-base-content) 10%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-base-100) 70%, white);
+}
+
+.hero-panel {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #3f7f77 45%, #6b8f71 100%);
+}
+
+.service-panel {
+  background: linear-gradient(145deg, var(--color-base-100) 0%, var(--color-base-200) 100%);
+}
+
+.hero-decoration {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  opacity: 0.22;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cpath d='M32 214C62 170 84 117 95 70C103 40 115 24 137 24C159 24 174 43 175 75C176 112 149 150 122 183C108 200 94 218 82 236' stroke='%23ffffff' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M192 216C167 188 147 155 143 122C140 95 154 79 177 79C194 79 208 91 209 112C210 135 193 167 177 195' stroke='%23dcefd8' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M65 145C80 132 87 121 92 102C97 84 93 68 79 58' stroke='%23dcefd8' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M164 131C152 116 145 101 144 83C143 65 150 51 165 44' stroke='%23ffffff' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hero-decoration-left {
+  left: -45px;
+  bottom: -35px;
+  transform: rotate(-8deg);
+}
+
+.hero-decoration-right {
+  right: -35px;
+  top: -35px;
+  transform: rotate(12deg);
+}
+
+.brand-mark {
+  text-shadow: 0 2px 8px color-mix(in srgb, var(--color-base-content) 20%, transparent);
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.service-list li {
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-base-100) 92%, white) 0%, color-mix(in srgb, var(--color-base-200) 90%, white) 100%);
+  color: var(--color-base-content);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-base-content) 6%, transparent);
+}
+
+ul li,
+ol li {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-base-100) 90%, var(--color-secondary) 10%) 0%, color-mix(in srgb, var(--color-base-200) 90%, var(--color-accent) 8%) 100%);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 22%, transparent);
+  border-radius: 0.9rem;
+  color: var(--color-base-content);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.badge {
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .btn {
@@ -7,6 +97,22 @@
   border-radius: 9999px;
   font-size: 1rem;
   font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-base-100) 94%, white 6%) 0%, color-mix(in srgb, var(--color-base-200) 92%, white 8%) 100%);
+  color: var(--color-base-content);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 3px 8px color-mix(in srgb, var(--color-base-content) 10%, transparent);
+}
+
+.btn.btn-primary,
+.btn.btn-secondary,
+.btn.btn-accent,
+.btn.btn-neutral {
+  color: var(--color-primary-content);
+  background: linear-gradient(180deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 82%, var(--color-secondary)) 100%);
+}
+
+.btn.btn-outline {
+  background: color-mix(in srgb, var(--color-base-100) 90%, white 10%);
 }
 
 .btn:hover {
