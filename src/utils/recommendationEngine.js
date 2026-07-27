@@ -43,7 +43,12 @@ const mealTemplates = [
   {
     meal: 'Breakfast',
     title: 'Protein breakfast bowl',
-    ingredients: ['Greek yogurt', 'berries', 'oats', 'chia seeds'],
+    ingredients: [
+      { amount: '1 cup', ingredient: 'Greek yogurt' },
+      { amount: '1/2 cup', ingredient: 'berries' },
+      { amount: '1/3 cup', ingredient: 'oats' },
+      { amount: '1 tbsp', ingredient: 'chia seeds' },
+    ],
     alternatives: { Dairy: 'coconut yogurt', Vegan: 'coconut yogurt', Gluten: 'certified gluten-free oats', 'Low-carb': 'berries and chia seeds' },
     instructions: ['Combine the base, fruit, and oats in a bowl.', 'Top with chia seeds and serve.'],
     nutrition: 'Approx. 320 kcal · 22 g protein · 5 g fiber',
@@ -51,7 +56,13 @@ const mealTemplates = [
   {
     meal: 'Lunch',
     title: 'Protein and produce wrap',
-    ingredients: ['chicken', 'leafy greens', 'avocado', 'whole-grain wrap', 'hummus'],
+    ingredients: [
+      { amount: '4 oz', ingredient: 'chicken' },
+      { amount: '2 cups', ingredient: 'leafy greens' },
+      { amount: '1/2', ingredient: 'avocado' },
+      { amount: '1', ingredient: 'whole-grain wrap' },
+      { amount: '2 tbsp', ingredient: 'hummus' },
+    ],
     alternatives: { Vegan: 'chickpeas', Vegetarian: 'chickpeas', Pescatarian: 'salmon', Gluten: 'lettuce cups', Sesame: 'white-bean spread', 'Low-carb': 'lettuce cups' },
     instructions: ['Layer the protein, vegetables, and spread in the wrap.', 'Roll tightly and serve with fruit or vegetables.'],
     nutrition: 'Approx. 390 kcal · 24 g protein · 7 g fiber',
@@ -59,7 +70,13 @@ const mealTemplates = [
   {
     meal: 'Dinner',
     title: 'Balanced grain bowl',
-    ingredients: ['salmon', 'rice', 'leafy greens', 'avocado', 'lemon-herb dressing'],
+    ingredients: [
+      { amount: '5 oz', ingredient: 'salmon' },
+      { amount: '1 cup', ingredient: 'rice' },
+      { amount: '2 cups', ingredient: 'leafy greens' },
+      { amount: '1/2', ingredient: 'avocado' },
+      { amount: '1 tbsp', ingredient: 'lemon-herb dressing' },
+    ],
     alternatives: { Vegan: 'lentils', Vegetarian: 'lentils', 'Low-carb': 'cauliflower rice' },
     instructions: ['Cook the protein and grain.', 'Assemble with greens and vegetables, then add dressing.'],
     nutrition: 'Approx. 420 kcal · 26 g protein · 8 g fiber',
@@ -84,7 +101,24 @@ function makeRecipe(template, allergies, restrictions, goal) {
     .filter(([rule]) => allergies.includes(rule) || restrictions.includes(rule))
     .map(([, replacement]) => replacement);
   const safeIngredients = template.ingredients
-    .map((ingredient) => (conflictsWithPlan(ingredient, allergies, restrictions) ? replacements.shift() : ingredient))
+    .map((ingredient) => {
+      const ingredientName = typeof ingredient === 'string' ? ingredient : ingredient.ingredient;
+      const shouldSwap = conflictsWithPlan(ingredientName, allergies, restrictions);
+      if (!shouldSwap) {
+        return ingredient;
+      }
+
+      const replacement = replacements.shift();
+      if (!replacement) {
+        return ingredient;
+      }
+
+      if (typeof ingredient === 'string') {
+        return replacement;
+      }
+
+      return { ...ingredient, ingredient: replacement };
+    })
     .filter(Boolean);
 
   return {
@@ -95,43 +129,91 @@ function makeRecipe(template, allergies, restrictions, goal) {
   };
 }
 
-function adaptFoodSuggestions(suggestions, allergies, restrictions) {
+function adaptFoodSuggestions(suggestions, allergies, restrictions, enjoyedFoods = []) {
   const protein = restrictions.includes('Vegan') || restrictions.includes('Vegetarian')
     ? 'lentils or chickpeas'
     : restrictions.includes('Pescatarian') ? 'salmon' : 'chicken or salmon';
   const yogurt = allergies.includes('Dairy') || restrictions.includes('Vegan') ? 'dairy-free yogurt' : 'Greek yogurt';
   const nutSwap = allergies.includes('Tree nuts') || allergies.includes('Peanuts') ? 'seeds' : 'nuts';
+  const favorites = (enjoyedFoods || []).filter(Boolean);
+  const plantForward = favorites.includes('Tofu') || favorites.includes('Plant-based meals') || favorites.includes('Open to suggestions');
 
-  return suggestions.map((suggestion) => suggestion
-    .replace(/Greek yogurt/gi, '__YOGURT__')
-    .replace(/salmon/gi, protein)
-    .replace(/yogurt/gi, yogurt)
-    .replace(/__YOGURT__/g, yogurt)
-    .replace(/nuts/gi, nutSwap));
+  return suggestions.map((suggestion) => {
+    let adapted = suggestion
+      .replace(/Greek yogurt/gi, '__YOGURT__')
+      .replace(/salmon/gi, protein)
+      .replace(/yogurt/gi, yogurt)
+      .replace(/__YOGURT__/g, yogurt)
+      .replace(/nuts/gi, nutSwap);
+
+    if (plantForward) {
+      adapted = `${adapted} We also leaned toward plant-forward, allergy-safe ideas.`;
+    }
+
+    if (favorites.length) {
+      adapted = `${adapted} Your favorites like ${favorites.join(', ')} helped shape this option.`;
+    }
+
+    return adapted;
+  });
+}
+
+function mergeGoalContent(goalMap, primaryGoal, secondaryGoals, fallbackGoal) {
+  const selectedGoals = Array.from(new Set([primaryGoal, ...secondaryGoals].filter(Boolean)));
+  const items = selectedGoals.flatMap((goal) => goalMap[goal] || goalMap[fallbackGoal] || []);
+
+  if (items.every((item) => item && typeof item === 'object' && !Array.isArray(item))) {
+    const seen = new Set();
+    return items.filter((item) => {
+      const key = item.name || item.title || JSON.stringify(item);
+      if (seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    });
+  }
+
+  return Array.from(new Set(items));
 }
 
 export function buildRecommendations(survey) {
   const allergies = survey.allergies || [];
   const restrictions = (survey.restrictions || []).filter((item) => item !== 'None');
-  const goal = survey.goal || 'Eat healthier';
+  const primaryGoal = survey.goal || 'Eat healthier';
+  const secondaryGoals = (survey.goals || []).filter((item) => item !== 'None' && item !== primaryGoal);
+  const selectedGoals = Array.from(new Set([primaryGoal, ...secondaryGoals].filter(Boolean)));
+  const enjoyedFoods = (survey.enjoyedFoods || []).filter(Boolean);
   const weight = Number(survey.weight) || 0;
   const weightInKilograms = weight / 2.20462;
-  const proteinTarget = Math.round((goal === 'Gain muscle' ? 1.8 : goal === 'Lose weight' ? 1.4 : 1.6) * weightInKilograms);
-  const carbTarget = Math.round((goal === 'Lose weight' ? 2.5 : goal === 'Gain muscle' ? 4 : 3.2) * weightInKilograms);
-  const fatTarget = Math.round((goal === 'Lose weight' ? 0.8 : goal === 'Gain muscle' ? 0.9 : 0.8) * weightInKilograms);
+  const proteinTarget = Math.round((selectedGoals.includes('Gain muscle') ? 1.8 : selectedGoals.includes('Lose weight') ? 1.4 : 1.6) * weightInKilograms);
+  const carbTarget = Math.round((selectedGoals.includes('Lose weight') ? 2.5 : selectedGoals.includes('Gain muscle') ? 4 : 3.2) * weightInKilograms);
+  const fatTarget = Math.round((selectedGoals.includes('Lose weight') ? 0.8 : selectedGoals.includes('Gain muscle') ? 0.9 : 0.8) * weightInKilograms);
   const hydrationOunces = Math.round(weight * 0.67 + (survey.activityLevel === 'Very active' ? 16 : survey.activityLevel === 'Moderately active' ? 10 : 6));
   const preferredFitness = (survey.fitnessPreferences || []).map((preference) => fitnessDetails[preference]).filter(Boolean);
+  const foodRecommendations = adaptFoodSuggestions(mergeGoalContent(foodCopy, primaryGoal, secondaryGoals, 'Eat healthier'), allergies, restrictions, enjoyedFoods);
+  const fitnessRecommendations = mergeGoalContent(fitnessCopy, primaryGoal, secondaryGoals, 'Eat healthier');
+  const supplementRecommendations = mergeGoalContent(supplementCopy, primaryGoal, secondaryGoals, 'Eat healthier');
+  const supplementExtraRecommendations = mergeGoalContent(supplementExtraCopy, primaryGoal, secondaryGoals, 'Eat healthier');
 
   return {
-    foodRecommendations: adaptFoodSuggestions(foodCopy[goal] || foodCopy['Eat healthier'], allergies, restrictions),
-    fitnessRecommendations: fitnessCopy[goal] || fitnessCopy['Eat healthier'],
+    foodRecommendations,
+    fitnessRecommendations,
     fitnessPlans: preferredFitness.length ? preferredFitness : [fitnessDetails.Walking, fitnessDetails['Strength training']],
-    supplementRecommendations: supplementCopy[goal] || supplementCopy['Eat healthier'],
-    supplementExtraRecommendations: supplementExtraCopy[goal] || supplementExtraCopy['Eat healthier'],
-    recipeCards: mealTemplates.map((template) => makeRecipe(template, allergies, restrictions, goal)),
+    supplementRecommendations,
+    supplementExtraRecommendations,
+    recipeCards: mealTemplates.map((template) => makeRecipe(template, allergies, restrictions, primaryGoal)),
     dietaryNeeds: [...allergies, ...restrictions],
     macroTargets: { protein: `${proteinTarget} g`, carbs: `${carbTarget} g`, fats: `${fatTarget} g` },
     hydrationOunces: `${hydrationOunces} oz`,
     micronutrients: micronutrientTargets,
+    profileSummary: {
+      primaryGoal,
+      selectedGoals,
+      enjoyedFoods,
+      fitnessPreferences: (survey.fitnessPreferences || []).filter(Boolean),
+      activityLevel: survey.activityLevel,
+      supplements: (survey.supplements || []).filter((item) => item !== 'None'),
+    },
   };
 }

@@ -25,14 +25,14 @@ export const steps = [
     title: 'Allergies & avoidances',
     description: 'Which foods are you allergic to or want to avoid?',
     type: 'multi-select',
-    options: ['Peanuts', 'Tree nuts', 'Shellfish', 'Dairy', 'Gluten', 'Soy', 'Eggs', 'Sesame'],
+    options: ['Peanuts', 'Tree nuts', 'Shellfish', 'Dairy', 'Gluten', 'Soy', 'Eggs', 'Sesame', 'None'],
   },
   {
     key: 'enjoyedFoods',
     title: 'Foods you enjoy',
     description: 'What foods do you already like to eat?',
     type: 'multi-select',
-    options: ['Salmon', 'Chicken', 'Avocados', 'Rice', 'Greek yogurt', 'Leafy greens', 'Beans', 'Fruit'],
+    options: ['Salmon', 'Chicken', 'Avocados', 'Rice', 'Greek yogurt', 'Leafy greens', 'Beans', 'Fruit', 'Tofu', 'Plant-based meals', 'Open to suggestions'],
   },
   {
     key: 'restrictions',
@@ -54,13 +54,13 @@ export const steps = [
     description: 'Tell us a little more about your body and your routine.',
     type: 'form',
     fields: [
+      { key: 'name', label: 'Your name', type: 'text' },
       { key: 'age', label: 'Age', type: 'number' },
       { key: 'gender', label: 'Gender', type: 'text' },
       { key: 'weight', label: 'Weight (lb)', type: 'number' },
-      { key: 'height', label: 'Height (cm)', type: 'number' },
+      { key: 'height', label: 'Height (in)', type: 'number' },
       { key: 'sleepHours', label: 'Sleep hours per night', type: 'number' },
       { key: 'stressLevel', label: 'Stress level', type: 'text' },
-      { key: 'hydrationGoal', label: 'Hydration goal (L)', type: 'number' },
     ],
   },
   {

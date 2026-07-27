@@ -9,29 +9,29 @@ export default function SupplementsTab({ recommendations }) {
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {supplementCards.map((item) => (
-          <div key={item.name} className="card bg-base-200 shadow">
+          <div key={item.name} className="card h-full bg-base-200 shadow-xl">
             <figure className="h-56 overflow-hidden bg-base-100">
               <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
             </figure>
             <div className="card-body">
               <div className="flex flex-wrap items-start justify-between gap-3">
-                <h3 className="card-title">{item.name}</h3>
+                <h3 className="card-title text-xl text-primary">{item.name}</h3>
                 <div className="flex flex-wrap gap-2 justify-end">
                   {(item.bestFor || []).map((label) => (
-                    <span key={label} className="badge badge-primary">{label}</span>
+                    <span key={label} className="badge badge-accent">{label}</span>
                   ))}
                 </div>
               </div>
-              <p className="mt-2 text-sm">{item.description}</p>
+              <p className="mt-2 text-sm font-semibold text-base-content">{item.description}</p>
 
               <div className="mt-3 rounded-2xl bg-base-100 p-3">
-                <p className="font-semibold text-sm">Why this may help</p>
-                <p className="mt-1 text-sm opacity-80">{item.whyItMayHelp}</p>
+                <p className="text-sm font-semibold text-secondary">Why this may help</p>
+                <p className="mt-1 text-sm font-semibold opacity-80">{item.whyItMayHelp}</p>
               </div>
 
-              <ul className="mt-3 space-y-2 text-sm opacity-80">
+              <ul className="mt-3 space-y-2 text-sm font-semibold opacity-80">
                 {item.benefits.map((benefit) => (
-                  <li key={benefit} className="rounded-xl bg-base-100 p-2">• {benefit}</li>
+                  <li key={benefit} className="rounded-xl bg-base-100 p-2 text-info">• {benefit}</li>
                 ))}
               </ul>
             </div>

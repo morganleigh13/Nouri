@@ -1,4 +1,5 @@
 export const mockSurveyProfile = {
+  name: 'Morgan',
   goal: 'Lose weight',
   fitnessPreferences: ['Walking', 'Strength training', 'Yoga'],
   activityLevel: 'Moderately active',
@@ -8,10 +9,9 @@ export const mockSurveyProfile = {
   supplements: ['Vitamin D', 'Omega-3'],
   age: 32,
   gender: 'Woman',
-  weight: 149,
-  height: 165,
+  weight: 140,
+  height: 50,
   sleepHours: 7,
   stressLevel: 'Moderate',
-  hydrationGoal: 2.5,
   goals: ['Build energy', 'Improve sleep', 'Eat more protein'],
 };

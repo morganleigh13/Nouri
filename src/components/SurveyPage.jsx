@@ -1,18 +1,127 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { steps } from '../data/surveySteps';
+
+const hasValue = (value) => {
+  if (value === null || value === undefined) {
+    return false;
+  }
+
+  if (typeof value === 'string') {
+    return value.trim().length > 0;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length > 0;
+  }
+
+  return Boolean(value);
+};
+
+const isStepComplete = (step, survey) => {
+  if (step.type === 'select') {
+    return hasValue(survey[step.key]);
+  }
+
+  if (step.type === 'multi-select') {
+    const currentValue = survey[step.key] || [];
+    return Array.isArray(currentValue) ? currentValue.length > 0 : hasValue(currentValue);
+  }
+
+  if (step.type === 'form') {
+    return step.fields.every((field) => {
+      const value = survey[field.key];
+
+      if (field.key === 'height') {
+        return hasValue(value) && Number(value) >= 36;
+      }
+
+      if (field.key === 'weight') {
+        return hasValue(value) && Number(value) >= 65;
+      }
+
+      if (field.key === 'age') {
+        return hasValue(value) && Number(value) > 0;
+      }
+
+      return hasValue(value);
+    });
+  }
+
+  return true;
+};
 
 export default function SurveyPage({ survey, summaryText, onToggleOption, onFieldChange, onFinishSurvey }) {
   const navigate = useNavigate();
   const [stepIndex, setStepIndex] = useState(0);
   const step = steps[stepIndex];
 
-  const nextStep = () => setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+  useEffect(() => {
+    if (step?.key === 'bio') {
+      if (!hasValue(survey.weight)) {
+        onFieldChange('weight', '140');
+      }
+
+      if (!hasValue(survey.height)) {
+        onFieldChange('height', '50');
+      }
+    }
+  }, [step?.key, survey.height, survey.weight, onFieldChange]);
+
+  const nextStep = () => {
+    if (!isStepComplete(step, survey)) {
+      return;
+    }
+
+    setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+  };
+
   const previousStep = () => setStepIndex((index) => Math.max(index - 1, 0));
 
+  const handleMultiSelectOption = (option) => {
+    if (step.key === 'allergies' || step.key === 'restrictions') {
+      const current = survey[step.key] || [];
+
+      if (option === 'None') {
+        onFieldChange(step.key, current.includes('None') ? [] : ['None']);
+        return;
+      }
+
+      const withoutNone = current.filter((item) => item !== 'None');
+      const next = withoutNone.includes(option)
+        ? withoutNone.filter((item) => item !== option)
+        : [...withoutNone, option];
+
+      onFieldChange(step.key, next);
+      return;
+    }
+
+    onToggleOption(step.key, option);
+  };
+
+  const handleFormChange = (field, event) => {
+    onFieldChange(field.key, event.target.value);
+  };
+
+  const handleFieldBlur = (field) => {
+    const rawValue = survey[field.key];
+
+    if (field.key === 'height' && hasValue(rawValue) && Number(rawValue) < 36) {
+      onFieldChange(field.key, '36');
+    }
+
+    if (field.key === 'weight' && hasValue(rawValue) && Number(rawValue) < 65) {
+      onFieldChange(field.key, '65');
+    }
+  };
+
+  const canAdvance = isStepComplete(step, survey);
+
   return (
-    <div className="min-h-screen bg-base-200 px-4 pb-4 pt-20 text-base-content sm:p-6 lg:p-8">
-      <div className="mx-auto max-w-4xl rounded-box bg-base-100 p-5 shadow-xl sm:p-6">
+    <div className="relative min-h-screen overflow-hidden bg-base-200 px-4 pb-4 pt-20 text-base-content sm:p-6 lg:p-8">
+      <div className="survey-vines" aria-hidden="true" />
+      <div className="mx-auto flex min-h-[calc(100vh-6rem)] max-w-4xl items-center justify-center">
+        <div className="w-full rounded-box bg-base-100 p-5 shadow-xl sm:p-6">
         <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Step {stepIndex + 1} of {steps.length}</p>
@@ -31,7 +140,7 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
                 <button
                   key={option}
                   className={`btn justify-start ${active ? 'btn-primary' : 'btn-outline'}`}
-                  onClick={() => onToggleOption(step.key, option)}
+                  onClick={() => handleMultiSelectOption(option)}
                 >
                   {option}
                 </button>
@@ -57,13 +166,17 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
         {step.type === 'form' && (
           <div className="grid gap-4 md:grid-cols-2">
             {step.fields.map((field) => (
-              <label key={field.key} className="form-control">
-                <span className="label-text mb-2">{field.label}</span>
+              <label key={field.key} className="form-control gap-2">
+                <span className="label-text mb-1 text-primary font-semibold">{field.label}</span>
                 <input
                   type={field.type}
                   className="input input-bordered"
+                  min={field.key === 'height' ? 36 : field.key === 'weight' ? 65 : undefined}
+                  step="1"
+                  inputMode="numeric"
                   value={survey[field.key] ?? ''}
-                  onChange={(event) => onFieldChange(field.key, field.type === 'number' ? Number(event.target.value) : event.target.value)}
+                  onChange={(event) => handleFormChange(field, event)}
+                  onBlur={() => handleFieldBlur(field)}
                 />
               </label>
             ))}
@@ -75,9 +188,13 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
 
           <div className="flex flex-col gap-3 sm:flex-row">
             {stepIndex < steps.length - 1 ? (
-              <button className="btn btn-primary w-full sm:w-auto" onClick={nextStep}>Next</button>
+              <button className="btn btn-primary w-full sm:w-auto" onClick={nextStep} disabled={!canAdvance}>
+                Next
+              </button>
             ) : (
-              <button className="btn btn-success w-full sm:w-auto" onClick={onFinishSurvey}>Finish survey</button>
+              <button className="btn btn-success w-full sm:w-auto" onClick={onFinishSurvey} disabled={!canAdvance}>
+                Finish survey
+              </button>
             )}
           </div>
         </div>
@@ -85,6 +202,14 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
         <div className="mt-8 rounded-2xl bg-base-200 p-4 text-sm">
           <p className="font-semibold">Profile preview</p>
           <p className="mt-2">{summaryText}</p>
+          {!canAdvance && (
+            <p className="mt-3 text-sm font-medium text-warning">
+              {step.type === 'form'
+                ? 'Please complete every personal detail before continuing.'
+                : 'Please select at least one option before continuing.'}
+            </p>
+          )}
+        </div>
         </div>
       </div>
     </div>

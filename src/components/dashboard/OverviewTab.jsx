@@ -1,47 +1,57 @@
 export default function OverviewTab({ survey, recommendations }) {
-  const bmi = (() => {
-    const heightInMeters = Number(survey.height) / 100;
-    const weightInPounds = Number(survey.weight);
-    const weightInKilograms = weightInPounds / 2.20462;
+  const selectedGoals = Array.from(new Set([survey.goal, ...(survey.goals || [])].filter(Boolean)));
+  const primaryGoal = selectedGoals[0] || 'Set a goal';
+  const displayName = survey.name || 'Friend';
 
-    if (!heightInMeters || !weightInPounds) {
+  const bmi = (() => {
+    const heightInInches = Number(survey.height);
+    const weightInPounds = Number(survey.weight);
+
+    if (!heightInInches || !weightInPounds) {
       return 0;
     }
 
-    return weightInKilograms / (heightInMeters * heightInMeters);
+    const heightSquared = heightInInches * heightInInches;
+    return (weightInPounds / heightSquared) * 703;
   })();
 
   const ageBand = survey.age >= 65 ? 'Older adult' : survey.age >= 25 ? 'Adult' : 'Younger adult';
   const targetBmiMin = 18.5;
   const targetBmiMax = 24.9;
   const currentWeight = Number(survey.weight) || 0;
-  const heightMeters = Number(survey.height) ? Number(survey.height) / 100 : 0;
-  const healthyWeightMin = heightMeters ? (targetBmiMin * heightMeters * heightMeters * 2.20462).toFixed(1) : 0;
-  const healthyWeightMax = heightMeters ? (targetBmiMax * heightMeters * heightMeters * 2.20462).toFixed(1) : 0;
-  const weightDelta = currentWeight < healthyWeightMin ? currentWeight - healthyWeightMin : currentWeight > healthyWeightMax ? currentWeight - healthyWeightMax : 0;
+  const heightInInches = Number(survey.height) || 0;
+  const healthyWeightMin = heightInInches ? ((targetBmiMin * heightInInches * heightInInches) / 703).toFixed(1) : 0;
+  const healthyWeightMax = heightInInches ? ((targetBmiMax * heightInInches * heightInInches) / 703).toFixed(1) : 0;
+  const healthyWeightMinNumber = Number(healthyWeightMin);
+  const healthyWeightMaxNumber = Number(healthyWeightMax);
+  const weightDelta = currentWeight < healthyWeightMinNumber ? currentWeight - healthyWeightMinNumber : currentWeight > healthyWeightMaxNumber ? currentWeight - healthyWeightMaxNumber : 0;
   const bmiStatus = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Healthy range' : bmi < 30 ? 'Overweight' : 'Obesity range';
   const bmiBarPosition = Math.min(Math.max((bmi / 35) * 100, 5), 100);
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-      <div className="card bg-base-200 shadow">
+      <div className="card h-full bg-base-200 shadow-xl">
         <div className="card-body">
-          <h3 className="card-title">Profile snapshot</h3>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl bg-base-100 p-4">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">BMI</p>
-              <p className="mt-2 text-3xl font-bold">{bmi.toFixed(1)}</p>
-              <p className="text-sm opacity-70">{bmiStatus}</p>
+              <p className="mt-2 text-3xl font-bold text-accent">{bmi.toFixed(1)}</p>
+              <p className="text-sm font-semibold text-info">{bmiStatus}</p>
             </div>
             <div className="rounded-2xl bg-base-100 p-4">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">Age range</p>
-              <p className="mt-2 text-lg font-bold">{ageBand}</p>
-              <p className="text-sm opacity-70">Adult reference range: {healthyWeightMin}–{healthyWeightMax} lb</p>
+              <p className="mt-2 text-lg font-bold text-secondary">{ageBand}</p>
+              <p className="text-sm opacity-70">Healthy weight range: {healthyWeightMin}–{healthyWeightMax} lb</p>
             </div>
             <div className="rounded-2xl bg-base-100 p-4 sm:col-span-2">
-              <p className="text-xs uppercase tracking-[0.3em] opacity-60">Current goal</p>
-              <p className="mt-2 text-lg font-bold">{survey.goal}</p>
-              <p className="text-sm opacity-70">{weightDelta === 0 ? 'Your current weight falls within this reference range.' : `${Math.abs(weightDelta).toFixed(1)} lb ${weightDelta > 0 ? 'above' : 'below'} the reference range.`}</p>
+              <p className="text-xs uppercase tracking-[0.3em] opacity-60">Your selected goals</p>
+              <p className="mt-2 text-xl font-bold text-primary">{primaryGoal}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {selectedGoals.map((goal) => (
+                  <span key={goal} className="badge badge-accent badge-outline px-3 py-3 text-sm">{goal}</span>
+                ))}
+              </div>
+              <p className="mt-3 text-sm opacity-70">{weightDelta === 0 ? 'Your current weight falls within the healthy range.' : `${Math.abs(weightDelta).toFixed(1)} lb ${weightDelta > 0 ? 'above' : 'below'} the healthy range.`}</p>
             </div>
           </div>
 
@@ -64,29 +74,28 @@ export default function OverviewTab({ survey, recommendations }) {
         </div>
       </div>
 
-      <div className="card bg-base-200 shadow">
+      <div className="card h-full bg-base-200 shadow-xl">
         <div className="card-body">
-          <h3 className="card-title">Daily targets</h3>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl bg-base-100 p-4">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">Macros</p>
-              <ul className="mt-2 space-y-2 text-sm">
-                <li>Protein: {recommendations.macroTargets.protein}</li>
-                <li>Carbs: {recommendations.macroTargets.carbs}</li>
-                <li>Fats: {recommendations.macroTargets.fats}</li>
+              <ul className="mt-2 space-y-2 text-sm font-semibold">
+                <li className="text-primary">Protein: {recommendations.macroTargets.protein}</li>
+                <li className="text-secondary">Carbs: {recommendations.macroTargets.carbs}</li>
+                <li className="text-accent">Fats: {recommendations.macroTargets.fats}</li>
               </ul>
             </div>
             <div className="rounded-2xl bg-base-100 p-4">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">Micros</p>
-              <ul className="mt-2 space-y-2 text-sm">
+              <ul className="mt-2 space-y-2 text-sm font-semibold">
                 {recommendations.micronutrients.map((item) => (
-                  <li key={item}>• {item}</li>
+                  <li key={item} className="text-info">• {item}</li>
                 ))}
               </ul>
             </div>
             <div className="rounded-2xl bg-base-100 p-4 sm:col-span-2">
               <p className="text-xs uppercase tracking-[0.3em] opacity-60">Recommended water</p>
-              <p className="mt-2 text-lg font-bold">{recommendations.hydrationOunces} / day</p>
+              <p className="mt-2 text-2xl font-bold text-success">{recommendations.hydrationOunces} / day</p>
             </div>
           </div>
         </div>

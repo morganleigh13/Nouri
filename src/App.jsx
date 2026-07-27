@@ -20,15 +20,17 @@ function App() {
   const navigate = useNavigate();
 
   const summaryText = useMemo(() => {
+    const joinList = (value) => (value || []).filter(Boolean).join(', ') || 'None';
+
     return [
       `Goal: ${survey.goal}`,
-      `Fitness: ${survey.fitnessPreferences.join(', ')}`,
+      `Fitness: ${joinList(survey.fitnessPreferences)}`,
       `Activity: ${survey.activityLevel}`,
-      `Allergies: ${survey.allergies.join(', ')}`,
-      `Foods enjoyed: ${survey.enjoyedFoods.join(', ')}`,
-      `Restrictions: ${survey.restrictions.join(', ')}`,
-      `Supplements: ${survey.supplements.join(', ')}`,
-      `Goals: ${survey.goals.join(', ')}`,
+      `Allergies: ${joinList(survey.allergies)}`,
+      `Foods enjoyed: ${joinList(survey.enjoyedFoods)}`,
+      `Restrictions: ${joinList(survey.restrictions)}`,
+      `Supplements: ${joinList(survey.supplements)}`,
+      `Goals: ${joinList(survey.goals)}`,
     ].join(' • ');
   }, [survey]);
 
@@ -78,6 +80,7 @@ function App() {
           element={
             <DashboardPage
               summaryText={summaryText}
+              survey={survey}
               onBackToLanding={() => navigate('/')}
             />
           }

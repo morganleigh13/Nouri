@@ -32,28 +32,28 @@ export default function FitnessTab({ recommendations }) {
           const card = fitnessResourceCards[category]?.[0] || fallbackCard(plan);
 
           return (
-            <article key={category} className="card bg-base-200 shadow overflow-hidden">
+            <article key={category} className="card h-full overflow-hidden bg-base-200 shadow-xl">
               {card.image && <img src={card.image} alt={card.title} className="h-56 w-full object-cover" />}
               <div className="card-body">
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="card-title">{card.title}</h3>
-                  <span className="badge badge-primary">{category}</span>
+                  <h3 className="card-title text-xl text-primary">{card.title}</h3>
+                  <span className="badge badge-accent">{category}</span>
                 </div>
-                <p className="mt-2 text-sm">{card.description}</p>
-                <p className="mt-3 text-sm font-semibold">How to do it</p>
-                <ul className="mt-2 space-y-1 text-sm">
+                <p className="mt-2 text-sm font-semibold text-base-content">{card.description}</p>
+                <p className="mt-3 text-sm font-semibold text-secondary">How to do it</p>
+                <ul className="mt-2 space-y-1 text-sm font-semibold">
                   {card.technique.map((step) => (
                     <li key={step}>• {step}</li>
                   ))}
                 </ul>
-                <p className="mt-3 text-sm font-semibold">Examples</p>
-                <ul className="mt-2 space-y-1 text-sm">
+                <p className="mt-3 text-sm font-semibold text-accent">Examples</p>
+                <ul className="mt-2 space-y-1 text-sm font-semibold">
                   {card.examples.map((example) => (
                     <li key={example}>• {example}</li>
                   ))}
                 </ul>
-                <p className="mt-3 text-sm font-semibold">Popular classes</p>
-                <ul className="mt-2 space-y-1 text-sm">
+                <p className="mt-3 text-sm font-semibold text-info">Popular classes</p>
+                <ul className="mt-2 space-y-1 text-sm font-semibold">
                   {card.classes.map((className) => (
                     <li key={className}>• {className}</li>
                   ))}

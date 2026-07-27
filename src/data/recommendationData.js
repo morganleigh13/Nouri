@@ -45,7 +45,7 @@ export const supplementRecommendations = {
     {
       name: 'Protein powder',
       bestFor: ['Best for weight loss'],
-      image: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80',
+      image: 'https://media.istockphoto.com/id/2224995358/photo/protein-powder-in-scoop-and-plastic-jar-on-blue-background.jpg?s=612x612&w=0&k=20&c=Djxw7SKkqh1G5lF2lxP_RAXDet-RVhOgs260wK8ozvo=',
       description: 'A convenient way to keep protein intake higher when appetite is low or meals are rushed.',
       whyItMayHelp: 'Protein helps protect lean tissue and can improve fullness, which often makes it easier to stay on track with a calorie-conscious plan.',
       benefits: ['Helps support muscle retention', 'Useful as a breakfast or snack option', 'Easy to pair with fruit or oats'],
@@ -53,7 +53,7 @@ export const supplementRecommendations = {
     {
       name: 'Collagen peptides',
       bestFor: ['Best for sleep'],
-      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80',
+      image: 'https://media.istockphoto.com/id/1330176410/photo/hand-pours-collagen-protein-powder-in-a-glass-of-water-on-a-beige-background-a-natural.jpg?s=612x612&w=0&k=20&c=kSg6NblHu73JEgX72AV8ZVcKFjnYrClEHrh18fZVwWI=',
       description: 'A lighter, less common add-on that can support connective tissue recovery and daily protein intake.',
       whyItMayHelp: 'This option is often used to support recovery-focused routines and can help simplify daily protein intake without adding much complexity.',
       benefits: ['Pairs well with coffee or smoothies', 'Useful for people who prefer a simple protein source', 'Can fit into a convenience-first routine'],
@@ -79,7 +79,7 @@ export const supplementRecommendations = {
     {
       name: 'Protein powder',
       bestFor: ['Best for muscle gain'],
-      image: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80',
+      image: 'https://media.istockphoto.com/id/2224995358/photo/protein-powder-in-scoop-and-plastic-jar-on-blue-background.jpg?s=612x612&w=0&k=20&c=Djxw7SKkqh1G5lF2lxP_RAXDet-RVhOgs260wK8ozvo=',
       description: 'Helpful when you need a quick protein hit after training or on busy days.',
       whyItMayHelp: 'A simple protein delivery method can help you hit daily targets more consistently, which is often a major factor in muscle-support plans.',
       benefits: ['Supports recovery and satiety', 'Easy to blend into shakes', 'Helpful for consistent protein timing'],
@@ -97,7 +97,7 @@ export const supplementRecommendations = {
     {
       name: 'Protein powder',
       bestFor: ['Best for muscle gain'],
-      image: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80',
+      image: 'https://media.istockphoto.com/id/2224995358/photo/protein-powder-in-scoop-and-plastic-jar-on-blue-background.jpg?s=612x612&w=0&k=20&c=Djxw7SKkqh1G5lF2lxP_RAXDet-RVhOgs260wK8ozvo=',
       description: 'Useful when you want to keep lean protein intake consistent and effortless.',
       whyItMayHelp: 'Tone-up goals usually benefit from dependable protein intake, especially when meals are busy or when you need quick options between training sessions.',
       benefits: ['Helps support daily protein goals', 'Simple to use in breakfast or snack routines', 'Pairs well with fruit and oats'],

@@ -8,14 +8,16 @@ const navItems = [
   { key: 'resources', label: 'Resources' },
 ];
 
-export default function DashboardPage({ summaryText, onBackToLanding }) {
+export default function DashboardPage({ summaryText, onBackToLanding, survey }) {
+  const displayName = survey?.name || 'your';
+
   return (
     <div className="min-h-screen bg-base-200 px-4 pb-4 pt-20 text-base-content sm:p-6 lg:p-8">
       <div className="mx-auto max-w-6xl rounded-box bg-base-100 p-5 shadow-xl sm:p-6">
         <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Nouri dashboard</p>
-            <h2 className="text-2xl font-bold">Your personalized wellness profile</h2>
+            <h2 className="text-2xl font-bold">{displayName === 'your' ? 'Your personalized wellness profile' : `${displayName}'s personalized wellness profile`}</h2>
           </div>
           <button className="btn btn-ghost btn-sm" onClick={onBackToLanding}>Back to landing</button>
         </div>

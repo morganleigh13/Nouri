@@ -2,7 +2,7 @@ export const fitnessResourceCards = {
   walking: [
     {
       title: 'Brisk Walking',
-      image: 'https://images.unsplash.com/photo-1545346315-f4c47e3e1b9c?auto=format&fit=crop&w=900&q=80',
+      image: 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=900&q=80',
       description: 'A steady, low-impact way to build consistency and everyday movement habits.',
       technique: [
         'Begin with a relaxed pace that still feels like a workout.',
