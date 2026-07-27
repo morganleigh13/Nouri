@@ -58,6 +58,32 @@
 
 .brand-mark {
   text-shadow: 0 2px 8px color-mix(in srgb, var(--color-base-content) 20%, transparent);
+  color: var(--color-secondary);
+}
+
+.hero-panel h2,
+.hero-panel p,
+.service-panel h2,
+.service-panel p {
+  color: color-mix(in srgb, var(--color-base-content) 92%, white);
+}
+
+.hero-panel .brand-mark,
+.hero-panel .accent-text {
+  color: #f7f4e6;
+}
+
+.card h3,
+.card h4,
+.card .card-title {
+  color: var(--color-secondary);
+}
+
+.card p,
+.card li,
+.card label,
+.card small {
+  color: color-mix(in srgb, var(--color-base-content) 90%, white);
 }
 
 .service-list {
@@ -95,13 +121,14 @@ ol li {
 }
 
 .btn {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, color 0.2s ease;
   border-radius: 9999px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
   background: linear-gradient(180deg, color-mix(in srgb, var(--color-base-100) 94%, white 6%) 0%, color-mix(in srgb, var(--color-base-200) 92%, white 8%) 100%);
-  color: var(--color-base-content);
+  color: var(--color-secondary);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 3px 8px color-mix(in srgb, var(--color-base-content) 10%, transparent);
 }
 
@@ -115,8 +142,32 @@ ol li {
 
 .btn.btn-outline {
   background: color-mix(in srgb, var(--color-base-100) 90%, white 10%);
+  color: var(--color-primary);
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible,
+.card:hover,
+.service-list li:hover,
+ul li:hover,
+ol li:hover,
+a:hover,
+button:hover,
+[role="button"]:hover {
   transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 6px 12px color-mix(in srgb, var(--color-base-content) 12%, transparent);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  filter: brightness(1.03);
+}
+
+.card:hover,
+.service-list li:hover,
+ul li:hover,
+ol li:hover,
+a:hover {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-base-100) 96%, var(--color-secondary) 4%) 0%, color-mix(in srgb, var(--color-base-200) 96%, var(--color-accent) 4%) 100%);
+  border-color: color-mix(in srgb, var(--color-secondary) 32%, transparent);
 }

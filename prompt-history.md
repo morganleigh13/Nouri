@@ -42,4 +42,6 @@ The app should include a landing page that describes the services offered and a 
 
 - I would like the background of the dark a shade or two lighter and the background of the light to be a shade darker.  I would also like a smaller theme toggle.  I would like the toggle to say the name of the current theme and have a carrot to open the dropdown and not close unless you double click a theme or click out of the box.
 
--Make all list items in all themes a different color than the buttons to avoid confusion.
+- Make all list items in all themes a different color than the buttons to avoid confusion.
+
+- I like the previous font for all text in the site that is not a heading so please change all the text excpt headings to that.  I need the headings to be a few steps up on the dramatic effect with the font .  I would like different colors of font to seperate different elements.  For example the card on the landing page should have different colors for the h2 and paragraph.  I want more important elements to pop with a little color that still provides contrast with the background while attracting the eyes and showing seperation of concerns.

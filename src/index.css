@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap');
 @import 'tailwindcss';
+
 @plugin 'daisyui' {
   themes: emerald, corporate, sunset;
 }
@@ -81,11 +83,24 @@
 body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--color-base-content);
 }
 
 h1, h2, h3, h4, h5, h6, .brand-mark {
-  font-family: 'Noto Sans JP', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: 0.02em;
+  font-family: 'Klee One', 'Yuji Syuku', 'Shippori Mincho', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  text-transform: none;
+  line-height: 1.12;
+  color: var(--color-primary);
+}
+
+p, span, li, label, button, a, small, .text-base-content {
+  font-family: 'Shippori Mincho', 'Yuji Syuku', 'Klee One', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+strong, .accent-text {
+  color: var(--color-secondary);
 }
 
 #root {
