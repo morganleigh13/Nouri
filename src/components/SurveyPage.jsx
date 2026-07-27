@@ -63,7 +63,7 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
       }
 
       if (!hasValue(survey.height)) {
-        onFieldChange('height', '50');
+        onFieldChange('height', '60');
       }
     }
   }, [step?.key, survey.height, survey.weight, onFieldChange]);
@@ -83,7 +83,8 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
       const current = survey[step.key] || [];
 
       if (option === 'None') {
-        onFieldChange(step.key, current.includes('None') ? [] : ['None']);
+        const next = current.includes('None') ? [] : ['None'];
+        onFieldChange(step.key, next);
         return;
       }
 
@@ -166,8 +167,8 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
         {step.type === 'form' && (
           <div className="grid gap-4 md:grid-cols-2">
             {step.fields.map((field) => (
-              <label key={field.key} className="form-control gap-2">
-                <span className="label-text mb-1 text-primary font-semibold">{field.label}</span>
+              <label key={field.key} className="form-control gap-3">
+                <span className="label-text mt-1 text-primary font-semibold">{field.label}</span>
                 <input
                   type={field.type}
                   className="input input-bordered"
