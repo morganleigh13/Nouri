@@ -15,7 +15,7 @@ export default function DashboardPage({ summaryText, onBackToLanding }) {
         <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Nouri dashboard</p>
-            <h2 className="text-2xl font-bold">Your personalized mock wellness profile</h2>
+            <h2 className="text-2xl font-bold">Your personalized wellness profile</h2>
           </div>
           <button className="btn btn-ghost btn-sm" onClick={onBackToLanding}>Back to landing</button>
         </div>

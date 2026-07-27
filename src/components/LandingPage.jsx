@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function LandingPage({ onResetMockData }) {
+export default function LandingPage({ onResetData }) {
   const navigate = useNavigate();
 
   return (
     <div className="landing-shell flex min-h-screen items-center px-4 py-20 text-base-content sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-2">
-        <section className="landing-panel hero-panel relative flex min-h-[28rem] flex-col justify-center overflow-hidden rounded-[2rem] p-8 text-primary-content sm:p-12 lg:min-h-[34rem] lg:p-14">
+        <section className="landing-panel hero-panel relative flex min-h-112 flex-col justify-center overflow-hidden rounded-[2rem] p-8 text-primary-content sm:p-12 lg:min-h-[34rem] lg:p-14">
           <div className="hero-decoration hero-decoration-left" aria-hidden="true" />
           <div className="hero-decoration hero-decoration-right" aria-hidden="true" />
           <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/80">Welcome to</p>
@@ -24,21 +24,21 @@ export default function LandingPage({ onResetMockData }) {
             <button className="btn btn-neutral w-full sm:w-auto" onClick={() => navigate('/survey')}>
               Get started
             </button>
-            <button className="btn btn-outline btn-neutral w-full sm:w-auto" onClick={onResetMockData}>
-              Reset mock data
+            <button className="btn btn-outline btn-neutral w-full sm:w-auto" onClick={onResetData}>
+              Reset data
             </button>
           </div>
         </section>
 
-        <section className="landing-panel service-panel min-h-[28rem] overflow-hidden rounded-[2rem] lg:min-h-[34rem]">
+        <section className="landing-panel service-panel min-h-112 overflow-hidden rounded-[2rem] lg:min-h-[34rem]">
           <div className="card-body justify-center p-8 sm:p-12 lg:p-14">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">Your wellness toolkit</p>
-            <h2 className="mt-3 text-3xl font-bold text-base-content sm:text-4xl">Included services</h2>
+            <h2 className="service-heading mt-3 text-3xl font-bold text-base-content sm:text-4xl">Included services</h2>
             <ul className="service-list mt-8 text-base sm:text-lg">
               <li>Goal-focused onboarding survey</li>
               <li>BMI and wellness-profile review</li>
               <li>Food, fitness, and supplement recommendations</li>
-              <li>Mock navigation to review all results</li>
+              <li>Navigation to review all results</li>
             </ul>
           </div>
         </section>

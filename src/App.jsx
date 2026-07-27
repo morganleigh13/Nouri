@@ -60,7 +60,7 @@ function App() {
     <>
       <ThemePicker />
       <Routes>
-        <Route path="/" element={<LandingPage onResetMockData={resetFlow} />} />
+        <Route path="/" element={<LandingPage onResetData={resetFlow} />} />
         <Route
           path="/survey"
           element={

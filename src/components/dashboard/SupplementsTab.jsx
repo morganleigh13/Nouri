@@ -5,7 +5,7 @@ export default function SupplementsTab({ recommendations }) {
   return (
     <div className="space-y-6">
       <div className="alert alert-warning text-sm">
-        <span>Supplement suggestions are educational mock content, not medical advice. Check allergies, medications, pregnancy status, and lab-based needs with a qualified clinician before starting a supplement.</span>
+        <span>Supplement suggestions are educational content, not medical advice. Check allergies, medications, pregnancy status, and lab-based needs with a qualified clinician before starting a supplement.</span>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {supplementCards.map((item) => (

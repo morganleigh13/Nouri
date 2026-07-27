@@ -89,7 +89,7 @@ export default function ResourcesTab({ recommendations }) {
 
           <div className="mt-6 rounded-2xl bg-base-100 p-4">
             <p className="font-semibold">Meal delivery and personal chefs</p>
-            <p className="mt-2 text-sm">Static mock listings for the prototype. Choose a service type and distance to explore the interface.</p>
+            <p className="mt-2 text-sm">Static listings for the prototype. Choose a service type and distance to explore the interface.</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {foodServiceOptions.map((service) => (
                 <button
@@ -113,7 +113,7 @@ export default function ResourcesTab({ recommendations }) {
                   </a>
                 </div>
               ))}
-              {filteredFoodServices.length === 0 && <p className="text-sm opacity-70">No mock services match that distance. Try a wider radius.</p>}
+              {filteredFoodServices.length === 0 && <p className="text-sm opacity-70">No services match that distance. Try a wider radius.</p>}
             </div>
           </div>
 
@@ -189,7 +189,7 @@ export default function ResourcesTab({ recommendations }) {
                     </a>
                   </div>
                 ))}
-                {filteredResourceList.length === 0 && <p className="text-sm opacity-70">No mock locations match that distance. Try a wider radius or another city.</p>}
+                {filteredResourceList.length === 0 && <p className="text-sm opacity-70">No locations match that distance. Try a wider radius or another city.</p>}
               </div>
             </div>
 

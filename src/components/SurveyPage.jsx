@@ -16,12 +16,12 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
         <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Step {stepIndex + 1} of {steps.length}</p>
-            <h2 className="text-2xl font-bold">{step.title}</h2>
+            <h2 className="text-3xl font-bold leading-tight sm:text-4xl mt-1 -mb-4">{step.title}</h2>
           </div>
           <button className="btn btn-ghost btn-sm" onClick={() => navigate('/')}>Back to landing</button>
         </div>
 
-        <p className="mb-5 text-sm opacity-75">{step.description}</p>
+        <p className="mt-0 mb-3 text-sm opacity-75">{step.description}</p>
 
         {step.type === 'multi-select' && (
           <div className="grid gap-3 md:grid-cols-2">
@@ -83,7 +83,7 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
         </div>
 
         <div className="mt-8 rounded-2xl bg-base-200 p-4 text-sm">
-          <p className="font-semibold">Mock profile preview</p>
+          <p className="font-semibold">Profile preview</p>
           <p className="mt-2">{summaryText}</p>
         </div>
       </div>

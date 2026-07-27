@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Gochi+Hand&family=Inter:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @plugin 'daisyui' {
@@ -14,12 +14,12 @@
   --color-base-200: #e9efe2;
   --color-base-300: #dbe8d5;
   --color-base-content: #14271b;
-  --color-primary: #1f6a4b;
-  --color-primary-content: #ffffff;
-  --color-secondary: #275c6d;
-  --color-secondary-content: #ffffff;
-  --color-accent: #a85d1f;
-  --color-accent-content: #ffffff;
+  --color-primary: #1b5f91;
+  --color-primary-content: #f6fbff;
+  --color-secondary: #c68b1f;
+  --color-secondary-content: #201304;
+  --color-accent: #2d7d67;
+  --color-accent-content: #f1fff9;
   --color-neutral: #21352a;
   --color-neutral-content: #ffffff;
   --color-info: #19607f;
@@ -46,12 +46,12 @@
   --color-base-200: #1b3327;
   --color-base-300: #244231;
   --color-base-content: #f2f8ee;
-  --color-primary: #8fd9b0;
-  --color-primary-content: #0d1814;
-  --color-secondary: #87cfe4;
-  --color-secondary-content: #0b1f26;
-  --color-accent: #f1c07d;
-  --color-accent-content: #2f1d07;
+  --color-primary: #7fc9ff;
+  --color-primary-content: #03131f;
+  --color-secondary: #ffd36a;
+  --color-secondary-content: #241600;
+  --color-accent: #8fd4c2;
+  --color-accent-content: #061911;
   --color-neutral: #e8f3e2;
   --color-neutral-content: #14271b;
   --color-info: #93d6ee;
@@ -86,17 +86,17 @@ body {
   color: var(--color-base-content);
 }
 
-h1, h2, h3, h4, h5, h6, .brand-mark {
-  font-family: 'Klee One', 'Yuji Syuku', 'Shippori Mincho', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: 0.06em;
+h1, h2, h3, h4, h5, h6, .brand-mark, .btn, button {
+  font-family: 'Gochi Hand', 'Indie Flower', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.04em;
   font-weight: 700;
   text-transform: none;
   line-height: 1.12;
   color: var(--color-primary);
 }
 
-p, span, li, label, button, a, small, .text-base-content {
-  font-family: 'Shippori Mincho', 'Yuji Syuku', 'Klee One', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+p, span, li, label, a, small, .text-base-content {
+  font-family: 'Indie Flower', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
 strong, .accent-text {
