@@ -79,6 +79,8 @@
 
 ul li,
 ol li {
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
   background: linear-gradient(135deg, color-mix(in srgb, var(--color-base-100) 90%, var(--color-secondary) 10%) 0%, color-mix(in srgb, var(--color-base-200) 90%, var(--color-accent) 8%) 100%);
   border: 1px solid color-mix(in srgb, var(--color-secondary) 22%, transparent);
   border-radius: 0.9rem;
