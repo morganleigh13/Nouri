@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { steps } from '../data/surveySteps';
 
@@ -56,6 +57,12 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
   const [stepIndex, setStepIndex] = useState(0);
   const step = steps[stepIndex];
 
+  const getValidationMessage = () => (
+    step?.type === 'form'
+      ? 'Please complete every personal detail before continuing.'
+      : 'Please select at least one option before continuing.'
+  );
+
   useEffect(() => {
     if (step?.key === 'bio') {
       if (!hasValue(survey.weight)) {
@@ -68,12 +75,18 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
     }
   }, [step?.key, survey.height, survey.weight, onFieldChange]);
 
-  const nextStep = () => {
+  const handleAdvance = () => {
     if (!isStepComplete(step, survey)) {
+      toast.error(getValidationMessage());
       return;
     }
 
-    setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+    if (stepIndex < steps.length - 1) {
+      setStepIndex((index) => Math.min(index + 1, steps.length - 1));
+      return;
+    }
+
+    onFinishSurvey();
   };
 
   const previousStep = () => setStepIndex((index) => Math.max(index - 1, 0));
@@ -122,6 +135,7 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
     <div className="relative min-h-screen overflow-hidden bg-base-200 px-4 pb-4 pt-20 text-base-content sm:p-6 lg:p-8">
       <div className="survey-vines" aria-hidden="true" />
       <div className="mx-auto flex min-h-[calc(100vh-6rem)] max-w-4xl items-center justify-center">
+        <Toaster position="top-center" toastOptions={{ duration: 3000, style: { background: '#1f2937', color: '#fff' } }} />
         <div className="w-full rounded-box bg-base-100 p-5 shadow-xl sm:p-6">
         <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
@@ -167,8 +181,8 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
         {step.type === 'form' && (
           <div className="grid gap-4 md:grid-cols-2">
             {step.fields.map((field) => (
-              <label key={field.key} className="form-control gap-3">
-                <span className="label-text mt-1 text-primary font-semibold">{field.label}</span>
+              <label key={field.key} className="form-control gap-3 sm:gap-4">
+                <span className="label-text text-primary font-semibold">{field.label}</span>
                 <input
                   type={field.type}
                   className="input input-bordered"
@@ -189,11 +203,11 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
 
           <div className="flex flex-col gap-3 sm:flex-row">
             {stepIndex < steps.length - 1 ? (
-              <button className="btn btn-primary w-full sm:w-auto" onClick={nextStep} disabled={!canAdvance}>
+              <button className="btn btn-primary w-full sm:w-auto" onClick={handleAdvance}>
                 Next
               </button>
             ) : (
-              <button className="btn btn-success w-full sm:w-auto" onClick={onFinishSurvey} disabled={!canAdvance}>
+              <button className="btn btn-success w-full sm:w-auto" onClick={handleAdvance}>
                 Finish survey
               </button>
             )}

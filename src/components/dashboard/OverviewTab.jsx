@@ -14,7 +14,6 @@ export default function OverviewTab({ survey, recommendations }) {
     const heightSquared = heightInInches * heightInInches;
     return (weightInPounds / heightSquared) * 703;
   })();
-console.log(bmi)
   const ageBand = survey.age >= 65 ? 'Older adult' : survey.age >= 25 ? 'Adult' : 'Younger adult';
   const targetBmiMin = 18.5;
   const targetBmiMax = 24.9;
@@ -24,9 +23,9 @@ console.log(bmi)
   const healthyWeightMax = heightInInches ? ((targetBmiMax * heightInInches * heightInInches) / 703).toFixed(1) : 0;
   const healthyWeightMinNumber = Number(healthyWeightMin);
   const healthyWeightMaxNumber = Number(healthyWeightMax);
-  console.log(healthyWeightMinNumber, healthyWeightMaxNumber);
+ 
   const weightDelta = currentWeight < healthyWeightMinNumber ? currentWeight - healthyWeightMinNumber : currentWeight > healthyWeightMaxNumber ? currentWeight - healthyWeightMaxNumber : 0;
-  console.log(weightDelta);
+
   const bmiStatus = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Healthy range' : bmi < 30 ? 'Overweight' : 'Obesity range';
   const bmiBarPosition = Math.min(Math.max((bmi / 35) * 100, 5), 100);
 
