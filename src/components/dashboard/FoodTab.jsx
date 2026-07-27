@@ -4,6 +4,11 @@ const foodSuggestionImages = {
   salmon: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80',
   yogurt: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80',
   greens: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
+  bowl: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80',
+  breakfast: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80',
+  smoothie: 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=900&q=80',
+  pasta: 'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=900&q=80',
+  snack: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=80',
   default: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80',
 };
 
@@ -21,10 +26,44 @@ function formatIngredient(ingredient) {
   return '';
 }
 
+function getFoodImage(item) {
+  const lowerItem = item.toLowerCase();
+
+  if (lowerItem.includes('salmon') || lowerItem.includes('protein') || lowerItem.includes('chicken')) {
+    return foodSuggestionImages.salmon;
+  }
+
+  if (lowerItem.includes('yogurt') || lowerItem.includes('greek') || lowerItem.includes('smoothie') || lowerItem.includes('breakfast')) {
+    return foodSuggestionImages.yogurt;
+  }
+
+  if (lowerItem.includes('greens') || lowerItem.includes('salad') || lowerItem.includes('leafy') || lowerItem.includes('vegetables')) {
+    return foodSuggestionImages.greens;
+  }
+
+  if (lowerItem.includes('bowl') || lowerItem.includes('grain') || lowerItem.includes('rice') || lowerItem.includes('lentils') || lowerItem.includes('chickpeas')) {
+    return foodSuggestionImages.bowl;
+  }
+
+  if (lowerItem.includes('toast') || lowerItem.includes('egg') || lowerItem.includes('omelet')) {
+    return foodSuggestionImages.breakfast;
+  }
+
+  if (lowerItem.includes('pasta') || lowerItem.includes('noodle') || lowerItem.includes('penne')) {
+    return foodSuggestionImages.pasta;
+  }
+
+  if (lowerItem.includes('snack') || lowerItem.includes('berries') || lowerItem.includes('nuts') || lowerItem.includes('fruit')) {
+    return foodSuggestionImages.snack;
+  }
+
+  return foodSuggestionImages.default;
+}
+
 export default function FoodTab({ recommendations }) {
   const [activeDay, setActiveDay] = useState(0);
-  const recipeCards = recommendations.recipeCards || [];
-  const dietaryNeeds = recommendations.dietaryNeeds || [];
+  const recipeCards = useMemo(() => recommendations.recipeCards || [], [recommendations.recipeCards]);
+  const dietaryNeeds = useMemo(() => recommendations.dietaryNeeds || [], [recommendations.dietaryNeeds]);
 
   const dayPlans = useMemo(() => {
     if (!recipeCards.length) return [];
@@ -130,27 +169,26 @@ export default function FoodTab({ recommendations }) {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {recommendations.foodRecommendations.map((item) => {
-          const lowerItem = item.toLowerCase();
-          const image = lowerItem.includes('salmon')
-            ? foodSuggestionImages.salmon
-            : lowerItem.includes('yogurt') || lowerItem.includes('greek')
-              ? foodSuggestionImages.yogurt
-              : lowerItem.includes('greens') || lowerItem.includes('salad') || lowerItem.includes('leafy')
-                ? foodSuggestionImages.greens
-                : foodSuggestionImages.default;
+      <div className="rounded-3xl bg-base-100 p-4 shadow-sm">
+        <div className="mb-3 flex items-center justify-between">
+          <h3 className="text-xl font-semibold text-primary">Food suggestions</h3>
+          <span className="text-sm opacity-70">Curated ideas</span>
+        </div>
 
-          return (
-            <div key={item} className="card h-full bg-base-200 shadow-xl">
-              <div className="card-body">
-                <img src={image} alt={item} className="mb-3 h-44 w-full rounded-2xl object-cover" />
-                <h3 className="card-title text-xl text-primary">Food suggestion</h3>
-                <p className="mt-2 text-sm font-semibold text-base-content">{item}</p>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {(recommendations.foodRecommendations || []).slice(0, 3).map((item) => {
+            const image = getFoodImage(item);
+
+            return (
+              <div key={item} className="overflow-hidden rounded-3xl bg-base-200 shadow-sm">
+                <img src={image} alt={item} className="h-40 w-full object-cover" />
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-base-content">{item}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

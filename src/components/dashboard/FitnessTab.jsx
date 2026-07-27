@@ -12,6 +12,46 @@ const categoryImages = {
   dance: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80',
   pilates: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
   hiit: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=900&q=80',
+  default: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+};
+
+const getFitnessImage = (plan) => {
+  const title = (plan.title || '').toLowerCase();
+  const category = (plan.category || '').toLowerCase();
+
+  if (category === 'walking' || title.includes('walk')) {
+    return categoryImages.walking;
+  }
+
+  if (category === 'running' || title.includes('run')) {
+    return categoryImages.running;
+  }
+
+  if (category === 'yoga' || title.includes('mobility') || title.includes('recovery')) {
+    return categoryImages.yoga;
+  }
+
+  if (category === 'strength' || title.includes('strength') || title.includes('resistance')) {
+    return categoryImages.strength;
+  }
+
+  if (category === 'cycling' || title.includes('cycle')) {
+    return categoryImages.cycling;
+  }
+
+  if (category === 'dance' || title.includes('dance')) {
+    return categoryImages.dance;
+  }
+
+  if (category === 'pilates' || title.includes('pilates')) {
+    return categoryImages.pilates;
+  }
+
+  if (category === 'hiit' || title.includes('hiit')) {
+    return categoryImages.hiit;
+  }
+
+  return categoryImages.default;
 };
 
 const fallbackCard = (plan) => ({
@@ -20,7 +60,7 @@ const fallbackCard = (plan) => ({
   technique: ['Start with 5 minutes of easy movement.', 'Choose an effort that lets you keep good form.', 'Increase time or difficulty gradually, week to week.'],
   examples: ['Try 20 minutes at a comfortable pace', 'Schedule 2–3 sessions each week'],
   classes: ['Community recreation classes', 'Beginner-friendly studio sessions'],
-  image: categoryImages[plan.category] || 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+  image: getFitnessImage(plan),
 });
 
 export default function FitnessTab({ recommendations }) {

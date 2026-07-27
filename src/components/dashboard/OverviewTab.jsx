@@ -1,32 +1,40 @@
+const calculateBmi = (heightInInches, weightInPounds) => {
+  if (!heightInInches || !weightInPounds) {
+    return 0;
+  }
+
+  const heightSquared = heightInInches * heightInInches;
+  return (weightInPounds / heightSquared) * 703;
+};
+
+const getBmiStatus = (bmi) => {
+  if (bmi < 18.5) return 'Underweight';
+  if (bmi < 25) return 'Healthy range';
+  if (bmi < 30) return 'Overweight';
+  return 'Obesity range';
+};
+
 export default function OverviewTab({ survey, recommendations }) {
   const selectedGoals = Array.from(new Set([survey.goal, ...(survey.goals || [])].filter(Boolean)));
   const primaryGoal = selectedGoals[0] || 'Set a goal';
-  const displayName = survey.name || 'Friend';
 
-  const bmi = (() => {
-    const heightInInches = Number(survey.height);
-    const weightInPounds = Number(survey.weight);
-
-    if (!heightInInches || !weightInPounds) {
-      return 0;
-    }
-
-    const heightSquared = heightInInches * heightInInches;
-    return (weightInPounds / heightSquared) * 703;
-  })();
+  const heightInInches = Number(survey.height) || 0;
+  const weightInPounds = Number(survey.weight) || 0;
+  const bmi = calculateBmi(heightInInches, weightInPounds);
   const ageBand = survey.age >= 65 ? 'Older adult' : survey.age >= 25 ? 'Adult' : 'Younger adult';
   const targetBmiMin = 18.5;
   const targetBmiMax = 24.9;
-  const currentWeight = Number(survey.weight) || 0;
-  const heightInInches = Number(survey.height) || 0;
   const healthyWeightMin = heightInInches ? ((targetBmiMin * heightInInches * heightInInches) / 703).toFixed(1) : 0;
   const healthyWeightMax = heightInInches ? ((targetBmiMax * heightInInches * heightInInches) / 703).toFixed(1) : 0;
   const healthyWeightMinNumber = Number(healthyWeightMin);
   const healthyWeightMaxNumber = Number(healthyWeightMax);
- 
-  const weightDelta = currentWeight < healthyWeightMinNumber ? currentWeight - healthyWeightMinNumber : currentWeight > healthyWeightMaxNumber ? currentWeight - healthyWeightMaxNumber : 0;
+  const weightDelta = weightInPounds < healthyWeightMinNumber
+    ? weightInPounds - healthyWeightMinNumber
+    : weightInPounds > healthyWeightMaxNumber
+      ? weightInPounds - healthyWeightMaxNumber
+      : 0;
 
-  const bmiStatus = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Healthy range' : bmi < 30 ? 'Overweight' : 'Obesity range';
+  const bmiStatus = getBmiStatus(bmi);
   const bmiBarPosition = Math.min(Math.max((bmi / 35) * 100, 5), 100);
 
   return (

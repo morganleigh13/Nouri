@@ -79,7 +79,6 @@ function App() {
           path="/dashboard/*"
           element={
             <DashboardPage
-              summaryText={summaryText}
               survey={survey}
               onBackToLanding={() => navigate('/')}
             />

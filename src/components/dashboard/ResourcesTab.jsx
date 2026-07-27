@@ -20,6 +20,20 @@ const foodServiceOptions = [
   { key: 'chefs', label: 'Personal chefs' },
 ];
 
+function formatIngredient(ingredient) {
+  if (typeof ingredient === 'string') {
+    return ingredient;
+  }
+
+  if (ingredient && typeof ingredient === 'object') {
+    const amount = ingredient.amount || '1 serving';
+    const name = ingredient.ingredient || ingredient.name || '';
+    return `${amount} ${name}`.trim();
+  }
+
+  return '';
+}
+
 export default function ResourcesTab({ recommendations }) {
   const [searchParams] = useSearchParams();
   const requestedActivity = searchParams.get('activity');
@@ -82,7 +96,12 @@ export default function ResourcesTab({ recommendations }) {
             <p className="font-semibold">Recipe ideas</p>
             <ul className="mt-2 space-y-2">
               {recommendations.recipeCards.slice(0, 3).map((recipe) => (
-                <li key={recipe.title} className="rounded-xl bg-base-200 p-3">{recipe.title} — {recipe.ingredients.join(', ')}</li>
+                <li key={recipe.title} className="rounded-xl bg-base-200 p-3">
+                  <p className="font-semibold">{recipe.title}</p>
+                  <p className="mt-1 text-sm opacity-80">
+                    {recipe.ingredients.map(formatIngredient).join(', ')}
+                  </p>
+                </li>
               ))}
             </ul>
           </div>
