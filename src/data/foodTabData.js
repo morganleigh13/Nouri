@@ -1,13 +1,13 @@
 const foodSuggestionImagePools = {
   salmon: [
+    'https://images.pexels.com/photos/29885687/pexels-photo-29885687.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    'https://images.pexels.com/photos/28161760/pexels-photo-28161760.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
     'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
   ],
   yogurt: [
+    'https://images.pexels.com/photos/566564/pexels-photo-566564.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    'https://images.pexels.com/photos/14864289/pexels-photo-14864289.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
     'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/5945567/pexels-photo-5945567.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
   ],
   greens: [
     'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
@@ -15,9 +15,9 @@ const foodSuggestionImagePools = {
     'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
   ],
   bowl: [
-    'https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    'https://images.pexels.com/photos/7660436/pexels-photo-7660436.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    'https://images.pexels.com/photos/4828100/pexels-photo-4828100.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    'https://images.pexels.com/photos/4828104/pexels-photo-4828104.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
   ],
   breakfast: [
     'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
@@ -43,7 +43,7 @@ const foodSuggestionImagePools = {
     'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
     'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
     'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-    'https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
   ],
 };
 

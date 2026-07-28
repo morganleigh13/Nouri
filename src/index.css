@@ -84,6 +84,7 @@ body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   color: var(--color-base-content);
+  font-size: 1.02rem;
 }
 
 h1, h2, h3, h4, h5, h6, .brand-mark, .btn, button {
