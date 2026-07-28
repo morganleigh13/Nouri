@@ -20,8 +20,9 @@ export default function OverviewTab({ survey, recommendations }) {
 
   const heightInInches = Number(survey.height) || 0;
   const weightInPounds = Number(survey.weight) || 0;
+  const ageValue = Number(survey.age);
   const bmi = calculateBmi(heightInInches, weightInPounds);
-  const ageBand = survey.age >= 65 ? 'Older adult' : survey.age >= 25 ? 'Adult' : 'Younger adult';
+  const ageBand = Number.isFinite(ageValue) && ageValue >= 65 ? 'Older adult' : Number.isFinite(ageValue) && ageValue >= 25 ? 'Adult' : 'Younger adult';
   const targetBmiMin = 18.5;
   const targetBmiMax = 24.9;
   const healthyWeightMin = heightInInches ? ((targetBmiMin * heightInInches * heightInInches) / 703).toFixed(1) : 0;

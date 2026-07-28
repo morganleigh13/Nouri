@@ -2,55 +2,7 @@ import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { steps } from '../data/surveySteps';
-
-const hasValue = (value) => {
-  if (value === null || value === undefined) {
-    return false;
-  }
-
-  if (typeof value === 'string') {
-    return value.trim().length > 0;
-  }
-
-  if (Array.isArray(value)) {
-    return value.length > 0;
-  }
-
-  return Boolean(value);
-};
-
-const isStepComplete = (step, survey) => {
-  if (step.type === 'select') {
-    return hasValue(survey[step.key]);
-  }
-
-  if (step.type === 'multi-select') {
-    const currentValue = survey[step.key] || [];
-    return Array.isArray(currentValue) ? currentValue.length > 0 : hasValue(currentValue);
-  }
-
-  if (step.type === 'form') {
-    return step.fields.every((field) => {
-      const value = survey[field.key];
-
-      if (field.key === 'height') {
-        return hasValue(value) && Number(value) >= 36;
-      }
-
-      if (field.key === 'weight') {
-        return hasValue(value) && Number(value) >= 65;
-      }
-
-      if (field.key === 'age') {
-        return hasValue(value) && Number(value) > 0;
-      }
-
-      return hasValue(value);
-    });
-  }
-
-  return true;
-};
+import { hasValue, isStepComplete, sanitizeFieldValue } from '../utils/surveyValidation';
 
 export default function SurveyPage({ survey, summaryText, onToggleOption, onFieldChange, onFinishSurvey }) {
   const navigate = useNavigate();
@@ -114,7 +66,8 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
   };
 
   const handleFormChange = (field, event) => {
-    onFieldChange(field.key, event.target.value);
+    const sanitized = sanitizeFieldValue(field, event.target.value);
+    onFieldChange(field.key, sanitized);
   };
 
   const handleFieldBlur = (field) => {

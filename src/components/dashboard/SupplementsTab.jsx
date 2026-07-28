@@ -1,14 +1,14 @@
 const supplementImageMap = {
-  protein: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80',
-  collagen: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=900&q=80',
-  magnesium: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=900&q=80',
-  vitamin: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80',
-  omega: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80',
-  sleep: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
-  probiotic: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80',
-  'vitamin d3': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80',
-  'l-theanine': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80',
-  default: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80',
+  protein: 'https://images.pexels.com/photos/13779107/pexels-photo-13779107.jpeg?cs=srgb&dl=pexels-supliful-13779107.jpg&fm=jpg',
+  collagen: 'https://images.pexels.com/photos/29107595/pexels-photo-29107595.jpeg?cs=srgb&dl=pexels-afterave-essentials-2011504051-29107595.jpg&fm=jpg',
+  magnesium: 'https://images.pexels.com/photos/3850723/pexels-photo-3850723.jpeg?cs=srgb&dl=pexels-readymade-3850723.jpg&fm=jpg',
+  vitamin: 'https://images.pexels.com/photos/7615565/pexels-photo-7615565.jpeg?cs=srgb&dl=pexels-n-voitkevich-7615565.jpg&fm=jpg',
+  omega: 'https://images.pexels.com/photos/17820709/pexels-photo-17820709.jpeg?cs=srgb&dl=pexels-jonathanborba-17820709.jpg&fm=jpg',
+  sleep: 'https://images.pexels.com/photos/17891280/pexels-photo-17891280.jpeg?cs=srgb&dl=pexels-jonathanborba-17891280.jpg&fm=jpg',
+  probiotic: 'https://images.pexels.com/photos/3850749/pexels-photo-3850749.jpeg?cs=srgb&dl=pexels-readymade-3850749.jpg&fm=jpg',
+  'vitamin d3': 'https://images.pexels.com/photos/7615565/pexels-photo-7615565.jpeg?cs=srgb&dl=pexels-n-voitkevich-7615565.jpg&fm=jpg',
+  'l-theanine': 'https://images.pexels.com/photos/17820709/pexels-photo-17820709.jpeg?cs=srgb&dl=pexels-jonathanborba-17820709.jpg&fm=jpg',
+  default: 'https://images.pexels.com/photos/3850721/pexels-photo-3850721.jpeg?cs=srgb&dl=pexels-readymade-3850721.jpg&fm=jpg',
 };
 
 function getSupplementImage(item) {

@@ -20,17 +20,27 @@ function App() {
   const navigate = useNavigate();
 
   const summaryText = useMemo(() => {
-    const joinList = (value) => (value || []).filter(Boolean).join(', ') || 'None';
+    const normalizeText = (value) => {
+      if (Array.isArray(value)) {
+        return value.filter(Boolean).join(', ') || 'None';
+      }
+
+      if (typeof value === 'string') {
+        return value.trim() || 'None';
+      }
+
+      return 'None';
+    };
 
     return [
-      `Goal: ${survey.goal}`,
-      `Fitness: ${joinList(survey.fitnessPreferences)}`,
-      `Activity: ${survey.activityLevel}`,
-      `Allergies: ${joinList(survey.allergies)}`,
-      `Foods enjoyed: ${joinList(survey.enjoyedFoods)}`,
-      `Restrictions: ${joinList(survey.restrictions)}`,
-      `Supplements: ${joinList(survey.supplements)}`,
-      `Goals: ${joinList(survey.goals)}`,
+      `Goal: ${normalizeText(survey.goal)}`,
+      `Fitness: ${normalizeText(survey.fitnessPreferences)}`,
+      `Activity: ${normalizeText(survey.activityLevel)}`,
+      `Allergies: ${normalizeText(survey.allergies)}`,
+      `Foods enjoyed: ${normalizeText(survey.enjoyedFoods)}`,
+      `Restrictions: ${normalizeText(survey.restrictions)}`,
+      `Supplements: ${normalizeText(survey.supplements)}`,
+      `Goals: ${normalizeText(survey.goals)}`,
     ].join(' • ');
   }, [survey]);
 

@@ -62,6 +62,10 @@ export default function ResourcesTab({ recommendations }) {
     setSelectedCity(stateCityOptions[nextState][0]);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
       <div className="card bg-base-200 shadow">
@@ -239,6 +243,14 @@ export default function ResourcesTab({ recommendations }) {
           <p className="mt-2 text-sm">{resourceCatalog.recipes.details}</p>
         </div>
       </div>
+
+      <button
+        onClick={scrollToTop}
+        className="btn btn-circle btn-primary fixed bottom-6 right-6 z-50 shadow-lg animate-pulse"
+        aria-label="Back to top"
+      >
+        ↑
+      </button>
     </div>
   );
 }
