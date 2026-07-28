@@ -2,6 +2,8 @@
 
 A polished, front-end wellness experience designed to make healthy habits feel more personalized, approachable, and motivating.
 
+![Nouri Preview](nouri-landing-page.png "nouri-landing-page")
+
 Nouri guides users through a short survey to understand their goals, preferences, lifestyle, and restrictions, then turns that information into a tailored dashboard with recommendations for food, fitness, supplements, hydration, and wellness resources in their area or wherever they are.
 
 ## Live demo
@@ -29,7 +31,7 @@ The project was planned as a React + Vite prototype focused on experience design
 2. Capturing user responses in centralized state
 3. Generating tailored recommendations from the survey data
 4. Presenting those results in a dashboard with clear wellness categories
-5. Refining the interface to feel polished and intentional
+5. Giving tailored resources to the user by location
 
 ## Features
 
@@ -109,7 +111,4 @@ The app is not medical advice. Users should verify ingredients, fitness plans, a
 
 ## Future notes
 
-- Add a screenshot or GIF of the app here
-- Add your deployed demo link here
-- Add any additional product goals or next steps here
 
