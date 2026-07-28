@@ -34,6 +34,13 @@ The app should include a landing page that describes the services offered and a 
 
 - Cursor response: The main improvement I’m making now is the router layout itself: the dashboard should be a true wrapper with nested child routes, rather than the dashboard page owning its own separate route tree.
 
+- Dev: Why in this file (FoodTab.jsx) is the default picture rendering for image 2 and 3? Thats why I thought the pictures were wrong before it is because there is a bug and anything after the first image is all the same?
+
+- GitHub Copilot: Yes — the behavior was caused by the image-matching logic falling back to the default image for several of the longer food suggestions, so the later cards were effectively rendering the same fallback visual.
+
+What was wrong
+The old matcher only checked a few broad keywords and did not handle the text patterns in your actual recommendations very well. That meant a lot of items were missing a strong match and landing on the fallback image.
+
 ## For styling
 
 - I would like you to use DaisyUI along with tailwindCss to give my website a themes dropdown where users can choose from a custom light and dark mode using Nouris name in the title and a few of daisyUIs most popular color themes that would go well with a holistic health site.  Search the internet and come up with a few color schemes that would be appealing to both men and woman, making sure there is good contrast so the font is easy to read and there is depth. The light and dark mode should also compliment each other. I like rounded buttons and a little bigger of a font.

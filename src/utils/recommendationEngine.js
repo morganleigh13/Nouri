@@ -91,9 +91,9 @@ function conflictsWithPlan(text, allergies, restrictions) {
 }
 
 const recipeImageMap = {
-  Breakfast: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80',
-  Lunch: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
-  Dinner: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80',
+  Breakfast: 'https://images.pexels.com/photos/7615564/pexels-photo-7615564.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+  Lunch: 'https://images.pexels.com/photos/7615569/pexels-photo-7615569.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+  Dinner: 'https://images.pexels.com/photos/7615415/pexels-photo-7615415.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
 };
 
 function makeRecipe(template, allergies, restrictions, goal) {
