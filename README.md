@@ -53,6 +53,35 @@ The project was planned as a React + Vite prototype focused on experience design
 - Add more advanced personalization rules and progress tracking
 
 
+## Commit history
+
+A full record of the project's development milestones:
+
+- 06320af — Adds picture and updates readMe
+- 0d34313 — Increases font size
+- 9daa5b8 — Working on getting photos right
+- 747be25 — Found images on Pexels for supplements
+- 0eff42b — Working around image availability issues by using duplicates for now
+- 12c2a3e — Adds React Hot Toast feedback for incomplete survey steps
+- 02bc001 — Console logged weights and made sure each step was accurate; tested data a few ways
+- 9594236 — Stores survey responses in local storage and establishes BMI logic
+- 22df5b9 — Adjusts spacing in survey forms
+- 5ffed96 — Experiments with fonts and button colors
+- 59b1457 — Trying out different fonts
+- f9f9835 — Styles the app with DaisyUI and improves button and list clarity
+- d7a8a24 — Adding Claude
+- 9f4af15 — Adds custom DaisyUI themes for light and dark mode
+- a2ebd79 — Switched to Codex, fixed recommendation reference issues, raised the older-adult age range, and added a README
+- ced7ccf — Adds dynamic fitness-resource filtering by state and city
+- 75656e7 — Anchors resource-page sections to left-side navigation
+- 4cb7776 — Adds images and details to the supplements tab and recommendation links
+- 54b891b — Adds images and detailed instructions to the fitness dashboard section
+- 071d0cb — Fixes a bug affecting vegan restrictions
+- 5d8d0ef — Splits the app into landing, survey, and dashboard routes for better organization
+- 3e8249c — Builds the landing page and dashboard structure with resource links
+- 5cd234c — Adds React, Vite, Redux, DaisyUI, and Tailwind
+- 69d09ab — Initial commit
+
 ## Technologies used
 
 - React
