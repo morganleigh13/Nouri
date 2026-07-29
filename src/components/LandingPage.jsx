@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
-export default function LandingPage({ onResetData }) {
+export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
@@ -23,9 +23,6 @@ export default function LandingPage({ onResetData }) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <button className="btn btn-neutral w-full sm:w-auto" onClick={() => navigate('/survey')}>
               Get started
-            </button>
-            <button className="btn btn-outline btn-neutral w-full sm:w-auto" onClick={onResetData}>
-              Reset data
             </button>
           </div>
         </section>

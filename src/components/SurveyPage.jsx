@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { steps } from '../data/surveySteps';
 import { hasValue, isStepComplete, sanitizeFieldValue } from '../utils/surveyValidation';
 

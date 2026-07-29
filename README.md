@@ -8,7 +8,7 @@ Nouri guides users through a short survey to understand their goals, preferences
 
 ## Live demo
 
-- Demo link: Add your deployed GitHub Pages URL here
+- Demo link: [Nouri Demo](https://morganleigh13.github.io/)
 
 ## Problem
 
@@ -55,7 +55,21 @@ The project was planned as a React + Vite prototype focused on experience design
 
 ## Commit history
 
-A full record of the project's development milestones:
+This repository contains two related storylines:
+
+### Nouri app history
+A full record of the original Nouri app development milestones:
+
+### GitHub Pages hosting history
+The commits specific to turning this repo into a live GitHub Pages site:
+
+- d742651 — Had to use hash router for static hosting. Also removed reset button from landing page.
+- 6253d3f — Update dependencies
+- 8e88467 — Changes to react-router. dom is deprecated.
+- 3416c8c — Configure GitHub Pages deployment
+- f1913bd — Created new repository to host site on GitHub Pages.
+
+### Nouri Development history
 
 - 06320af — Adds picture and updates readMe
 - 0d34313 — Increases font size
@@ -81,6 +95,7 @@ A full record of the project's development milestones:
 - 3e8249c — Builds the landing page and dashboard structure with resource links
 - 5cd234c — Adds React, Vite, Redux, DaisyUI, and Tailwind
 - 69d09ab — Initial commit
+
 
 ## Technologies used
 

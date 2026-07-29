@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { resourceCatalog } from '../../data/resourceCatalog';
 import { fitnessLocationGuides, supplementLocationGuides, foodServiceGuides, stateCityOptions } from '../../data/fitnessResources';
 

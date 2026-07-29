@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetSurvey, updateSurvey } from './store/store';
