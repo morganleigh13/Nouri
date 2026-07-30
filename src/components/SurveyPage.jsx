@@ -17,11 +17,11 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
 
   useEffect(() => {
     if (step?.key === 'bio') {
-      if (!hasValue(survey.weight)) {
+      if (survey.weight === undefined || survey.weight === null) {
         onFieldChange('weight', '140');
       }
 
-      if (!hasValue(survey.height)) {
+      if (survey.height === undefined || survey.height === null) {
         onFieldChange('height', '60');
       }
     }
