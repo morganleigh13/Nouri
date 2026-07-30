@@ -137,11 +137,12 @@ export default function SurveyPage({ survey, summaryText, onToggleOption, onFiel
               <label key={field.key} className="form-control gap-3 sm:gap-4">
                 <span className="label-text text-primary font-semibold">{field.label}</span>
                 <input
-                  type={field.type}
+                  type={field.type === 'number' ? 'text' : 'text'}
                   className="input input-bordered"
                   min={field.key === 'height' ? 36 : field.key === 'weight' ? 65 : undefined}
                   step="1"
-                  inputMode="numeric"
+                  inputMode={field.type === 'number' ? 'numeric' : 'text'}
+                  pattern={field.type === 'number' ? '[0-9]*' : '[A-Za-z\s\'-]*'}
                   value={survey[field.key] ?? ''}
                   onChange={(event) => handleFormChange(field, event)}
                   onBlur={() => handleFieldBlur(field)}
