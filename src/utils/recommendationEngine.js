@@ -90,34 +90,34 @@ function conflictsWithPlan(text, allergies, restrictions) {
   );
 }
 
-const fallbackRecipeImage = 'https://images.pexels.com/photos/7615415/pexels-photo-7615415.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1';
+const fallbackRecipeImage = 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1';
 
 const mealImageFallbackMap = {
-  Breakfast: 'https://images.pexels.com/photos/7615564/pexels-photo-7615564.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-  Lunch: 'https://images.pexels.com/photos/7615569/pexels-photo-7615569.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
-  Dinner: 'https://images.pexels.com/photos/7615415/pexels-photo-7615415.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+  Breakfast: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+  Lunch: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+  Dinner: 'https://images.pexels.com/photos/1516415/pexels-photo-1516415.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
 };
 
 const recipeImageCatalog = [
   {
     terms: ['protein breakfast bowl', 'greek yogurt', 'coconut yogurt', 'yogurt', 'berries', 'oats', 'chia seeds'],
-    image: 'https://images.pexels.com/photos/7615564/pexels-photo-7615564.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    image: 'https://images.pexels.com/photos/11532336/pexels-photo-11532336.jpeg',
   },
   {
     terms: ['protein and produce wrap', 'whole-grain wrap', 'wrap', 'chicken', 'hummus', 'leafy greens', 'lettuce cups'],
-    image: 'https://images.pexels.com/photos/7615569/pexels-photo-7615569.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    image: 'https://images.pexels.com/photos/31177729/pexels-photo-31177729.jpeg',
   },
   {
     terms: ['chickpeas', 'white-bean spread', 'vegan wrap', 'vegetarian wrap'],
-    image: 'https://images.pexels.com/photos/7615569/pexels-photo-7615569.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    image: 'https://www.pexels.com/photo/person-holding-a-wrapped-meal-with-vegetables-inside-10027451/',
   },
   {
     terms: ['balanced grain bowl', 'salmon', 'rice', 'grain bowl', 'avocado'],
-    image: 'https://images.pexels.com/photos/7615415/pexels-photo-7615415.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    image: '',
   },
   {
     terms: ['lentils', 'cauliflower rice', 'vegan bowl', 'vegetarian bowl'],
-    image: 'https://images.pexels.com/photos/7615415/pexels-photo-7615415.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&dpr=1',
+    image: 'https://images.pexels.com/photos/13803823/pexels-photo-13803823.jpeg',
   },
 ];
 
