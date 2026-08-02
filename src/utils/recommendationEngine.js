@@ -113,7 +113,7 @@ const recipeImageCatalog = [
   },
   {
     terms: ['balanced grain bowl', 'salmon', 'rice', 'grain bowl', 'avocado'],
-    image: '',
+    image: 'https://images.pexels.com/photos/35267281/pexels-photo-35267281.jpeg',
   },
   {
     terms: ['lentils', 'cauliflower rice', 'vegan bowl', 'vegetarian bowl'],
